@@ -1,0 +1,10 @@
+.logo {
+  text-align: center;
+  padding-block: 2rem;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-family: sans-serif;
+}

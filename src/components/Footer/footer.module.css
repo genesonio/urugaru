@@ -1,0 +1,28 @@
+.footer {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  width: 80%;
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fineLine {
+  margin-block: 2rem;
+  height: 1px;
+  width: 80%;
+  background-color: lightgray;
+  align-self: center;
+}
+
+.instagram {
+  height: 18px;
+  width: 18px;
+}
+
+.copy {
+  color: gray;
+  font-size: 0.85rem;
+}

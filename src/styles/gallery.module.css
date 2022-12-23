@@ -1,0 +1,9 @@
+.gallery {
+  display: grid;
+  grid-template-areas: "a a a a";
+  grid-auto-rows: 30rem;
+  gap: 1rem;
+  padding-top: 4rem;
+  margin: auto;
+  width: 80%;
+}

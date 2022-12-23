@@ -1,0 +1,18 @@
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menuUl {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 16rem;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-family: sans-serif;
+}

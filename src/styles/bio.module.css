@@ -1,0 +1,25 @@
+.gridBio {
+  margin-top: 4rem;
+  width: 100%;
+  display: grid;
+  grid-template-areas: "cl img tx tx cr";
+  grid-template-columns: 0.3fr 1fr 1fr 1fr 0.3fr;
+  grid-template-rows: auto;
+}
+
+.leftCard {
+  grid-area: img;
+}
+
+.name {
+  grid-area: tx;
+  margin: 2.5rem auto 1rem;
+  font: 700 1.3rem sans-serif;
+}
+
+.bio {
+  grid-area: tx;
+  margin: 5rem;
+  font: 500 1rem sans-serif;
+  text-align: justify;
+}
