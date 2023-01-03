@@ -2,17 +2,17 @@ import Print from "../components/Print/Print";
 import shopStyle from "../styles/shop.module.css"
 
 const Shop = () => {
+  const urls = []
+
+  for (let i = 1; i <= 8 ; i++) {
+    urls.push(`https://zuj1e2l076.execute-api.sa-east-1.amazonaws.com/v1/s3?key=urugaru/gallery/${i}.jpg`)    
+  }
+
   return (
     <div className={shopStyle.shop}>
-      <Print alt='' url="https://picsum.photos/450/800" price="783" />
-      <Print alt='' url="https://picsum.photos/450/800" price="200" />
-      <Print alt='' url="https://picsum.photos/450/800" price="300" />
-      <Print alt='' url="https://picsum.photos/450/800" price="400" />
-      <Print alt='' url="https://picsum.photos/450/800" price="500" />
-      <Print alt='' url="https://picsum.photos/450/800" price="600" />
-      <Print alt='' url="https://picsum.photos/450/800" price="700" />
-      <Print alt='' url="https://picsum.photos/450/800" price="800" />
-      <Print alt='' url="https://picsum.photos/450/800" price="900" />
+      {urls.map((url, index) => {
+        return <Print alt="random" url={url} key={index} />
+      })}
     </div>
   )
 }

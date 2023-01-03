@@ -59,3 +59,16 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model PhotoGallery {
+  id    String @id @default(cuid())
+  name  String
+  photo String
+}
+
+model PhotoShop {
+  id    String @id @default(cuid())
+  name  String
+  photo String
+  price String
+}

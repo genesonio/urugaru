@@ -1,5 +1,5 @@
 // @ts-check
-import { z } from "zod";
+import { z } from "zod"
 
 /**
  * Specify your server-side environment variables schema here.
@@ -15,13 +15,13 @@ export const serverSchema = z.object({
   NEXTAUTH_URL: z.preprocess(
     // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
     // Since NextAuth.js automatically uses the VERCEL_URL if present.
-    (str) => process.env.VERCEL_URL ?? str,
+    str => process.env.VERCEL_URL ?? str,
     // VERCEL_URL doesn't include `https` so it cant be validated as a URL
-    process.env.VERCEL ? z.string() : z.string().url(),
+    process.env.VERCEL ? z.string() : z.string().url()
   ),
-  DISCORD_CLIENT_ID: z.string(),
-  DISCORD_CLIENT_SECRET: z.string(),
-});
+  AWS_SECRET_ACCESS_KEY: z.string(),
+  AWS_ACCESS_KEY_ID: z.string()
+})
 
 /**
  * Specify your client-side environment variables schema here.
@@ -30,7 +30,7 @@ export const serverSchema = z.object({
  */
 export const clientSchema = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
-});
+})
 
 /**
  * You can't destruct `process.env` as a regular object, so you have to do
@@ -40,4 +40,4 @@ export const clientSchema = z.object({
  */
 export const clientEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
-};
+}

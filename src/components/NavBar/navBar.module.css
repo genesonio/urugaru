@@ -13,6 +13,10 @@
 
 .link {
   text-decoration: none;
-  color: black;
+  color: darkgray;
   font-family: sans-serif;
+}
+
+.active {
+  color: black;
 }

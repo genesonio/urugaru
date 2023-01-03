@@ -20,3 +20,7 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+#active {
+  color: black;
+}
