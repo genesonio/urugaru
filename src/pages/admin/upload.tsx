@@ -2,24 +2,31 @@ import Image from "next/image"
 import type { ChangeEvent } from "react"
 import { useState } from "react"
 import upload from "./upload.module.css"
+import { generateUploadUrl } from "../../libs/s3Client.mjs"
+import { trpc } from "../../utils/trpc"
 
-const Upload = () => {
-  const [page, setPage] = useState<"gallery" | "shop">("gallery") //bucket/folder
-  const [value, setValue] = useState<number>() // price
-  const [photo, setPhoto] = useState<string>() // photoUrl to preview
-  const [fileName, setFileName] = useState<string>() // fileName to url generator
-  const [name, setName] = useState<string>() // Draw name
+function Upload() {
+  const [available, setAvailable] = useState<boolean>(false) //
+  const [price, setPrice] = useState<number>(0) // price
+  const [preview, setPreview] = useState<string>("") // previewUrl to preview
+  const [name, setName] = useState<string>("") // Print name
+  const [photo, setPhoto] = useState<File | string | Iterable<Uint8Array>>("")
+  const mutation = trpc.print.upload.useMutation()
 
   const handlePage = (e: ChangeEvent<HTMLSelectElement>) => {
-    const selectedPage = e.target.value as "gallery" | "shop"
-    setPage(selectedPage)
+    const selectedPage = e.target.value
+    if (selectedPage === "shop") {
+      setAvailable(true)
+    } else {
+      setAvailable(false)
+    }
   }
 
-  const handleValue = (e: ChangeEvent<HTMLInputElement>) => {
+  const handlePrice = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
     const isNum = !isNaN(newValue)
     if (isNum) {
-      setValue(newValue)
+      setPrice(newValue)
     }
   }
 
@@ -30,14 +37,28 @@ const Upload = () => {
       !e.target.files[0]
     )
       return
-    setFileName(e.target.files[0].name)
-    setPhoto(URL.createObjectURL(e.target.files[0]))
+    setPhoto(e.target.files[0])
+    setPreview(URL.createObjectURL(e.target.files[0]))
   }
 
-  /*    const handleUpload = () {
+  const handleUpload = async () => {
+    const url = await generateUploadUrl()
 
-   }
- */
+    await fetch(url, {
+      method: "PUT",
+      headers: new Headers({
+        "Content-Type": "multipart/form*data"
+      }),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      body: photo
+    })
+
+    const imgUrl = url.split("?")[0] as string
+
+    mutation.mutate({ name, price, url: imgUrl, isAvailable: available })
+  }
+
   return (
     <div className={upload.layout}>
       <h1>Upload</h1>
@@ -60,22 +81,22 @@ const Upload = () => {
           </select>
         </div>
         <label className={upload.photoLb} htmlFor="photo">
-          Photo: {fileName}
+          Photo:
         </label>
         <input
           className={upload.photo}
-          onChange={event => handlePhoto(event)}
+          onChange={e => handlePhoto(e)}
           type="file"
           name="photo"
           id="photo"
         />
-        {photo !== undefined ? (
+        {preview !== "" ? (
           <Image
             className={upload.preview}
             width={186.3}
             height={263.58}
-            src={photo}
-            alt=""
+            src={preview}
+            alt={name}
           />
         ) : null}
         <div style={{ display: "flex", gap: ".4rem", alignItems: "center" }}>
@@ -90,22 +111,28 @@ const Upload = () => {
             id="photoName"
           />
         </div>
-        {page === "shop" ? (
+        {available === true ? (
           <div style={{ display: "flex", gap: ".4rem", alignItems: "center" }}>
             <label htmlFor="price">Price: </label>
             <input
               className={upload.price}
-              onChange={event => handleValue(event)}
+              onChange={event => handlePrice(event)}
               type="text"
-              value={value}
+              value={price}
               name="price"
               id="price"
             />
-            {value}
           </div>
         ) : null}
-        <input type="button" value="Upload" className={upload.button} />
+        <input
+          type="button"
+          value="Upload"
+          onClick={() => handleUpload()}
+          className={upload.button}
+        />
       </form>
+
+      {/* <input type="button" value="test" onClick={test} /> */}
     </div>
   )
 }

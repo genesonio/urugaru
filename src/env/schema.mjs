@@ -18,9 +18,7 @@ export const serverSchema = z.object({
     str => process.env.VERCEL_URL ?? str,
     // VERCEL_URL doesn't include `https` so it cant be validated as a URL
     process.env.VERCEL ? z.string() : z.string().url()
-  ),
-  AWS_SECRET_ACCESS_KEY: z.string(),
-  AWS_ACCESS_KEY_ID: z.string()
+  )
 })
 
 /**
@@ -30,6 +28,8 @@ export const serverSchema = z.object({
  */
 export const clientSchema = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY: z.string(),
+  NEXT_PUBLIC_AWS_ACCESS_KEY_ID: z.string()
 })
 
 /**
@@ -40,4 +40,7 @@ export const clientSchema = z.object({
  */
 export const clientEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+  NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY:
+    process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+  NEXT_PUBLIC_AWS_ACCESS_KEY_ID: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID
 }

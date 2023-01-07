@@ -17,11 +17,7 @@ const config = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "picsum.photos"
-      },
-      {
-        protocol: "https",
-        hostname: "zuj1e2l076.execute-api.sa-east-1.amazonaws.com"
+        hostname: "urugaru.s3.sa-east-1.amazonaws.com"
       }
     ]
   }

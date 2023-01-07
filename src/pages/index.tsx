@@ -1,17 +1,15 @@
-import Print from '../components/Print/Print'
-import galleryStyle from '../styles/gallery.module.css'
+import Print from "../components/Print/Print"
+import galleryStyle from "../styles/gallery.module.css"
+import { trpc } from "../utils/trpc"
 
 function Gallery() {
-  const urls = []
-
-  for (let i = 1; i <= 8 ; i++) {
-    urls.push(`https://zuj1e2l076.execute-api.sa-east-1.amazonaws.com/v1/s3?key=urugaru/gallery/${i}.jpg`)    
-  }
+  const { data } = trpc.print.list.useQuery()
 
   return (
     <div className={galleryStyle.gallery}>
-      {urls.map((url, index) => {
-        return <Print alt="random" url={url} key={index} />
+      {data?.map(({ name, url, isAvailable }, index) => {
+        if (isAvailable === true) return
+        return <Print alt={name} url={url} key={index} />
       })}
     </div>
   )
