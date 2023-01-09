@@ -6,12 +6,14 @@ function Gallery() {
   const { data } = trpc.print.list.useQuery()
 
   return (
-    <div className={galleryStyle.gallery}>
-      {data?.map(({ name, url, isAvailable }, index) => {
-        if (isAvailable === true) return
-        return <Print alt={name} url={url} key={index} />
-      })}
-    </div>
+    <>
+      <div className={galleryStyle.gallery}>
+        {data?.map(({ name, url, isAvailable }, index) => {
+          if (isAvailable === true) return
+          return <Print name={name} alt={name} url={url} key={index} />
+        })}
+      </div>
+    </>
   )
 }
 

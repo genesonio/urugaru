@@ -25,5 +25,9 @@ export const printResource = router({
   list: publicProcedure.query(async ({ ctx }) => {
     const prints = await ctx.prisma.print.findMany()
     return prints
+  }),
+  getOne: publicProcedure.input(z.object({ id: z.string() })).query(async ({ ctx, input }) => {
+    const item = await ctx.prisma.print.findUnique({ where: { id: input.id } })
+    return item
   })
 });

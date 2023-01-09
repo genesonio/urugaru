@@ -1,12 +1,12 @@
 .footer {
-  margin: 0 0 1rem 0;
+  margin-top: auto;
   padding: 0;
   width: 80%;
   align-self: center;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .fineLine {
@@ -15,6 +15,14 @@
   width: 80%;
   background-color: lightgray;
   align-self: center;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: inherit;
 }
 
 .instagram {

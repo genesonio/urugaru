@@ -1,0 +1,7 @@
+.flex {
+  padding-top: 4rem;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  width: 80%;
+}

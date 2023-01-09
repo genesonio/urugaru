@@ -4,12 +4,13 @@ import printStyle from "./print.module.css"
 import { motion } from "framer-motion"
 
 type Props = {
+  name: string | null
   url: string
   price?: number
   alt: string
 }
 
-const Print: FunctionComponent<Props> = ({ url, price = 0, alt }) => {
+const Print: FunctionComponent<Props> = ({ name, url, price = 0, alt }) => {
   const delay = (): number => {
     return Math.random() * 0.4 + 0.1
   }
@@ -39,6 +40,7 @@ const Print: FunctionComponent<Props> = ({ url, price = 0, alt }) => {
         alt={alt}
         src={url}
       ></Image>
+      <h4 className={printStyle.name}>{name}</h4>
       {price > 0 ? <p className={printStyle.price}>R$ {price}</p> : null}
     </motion.div>
   )
