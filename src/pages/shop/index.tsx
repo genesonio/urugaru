@@ -14,6 +14,7 @@ const Shop = () => {
           if (!price) return
           return (
             <Link
+              className={shopStyle.link}
               key={index}
               onClick={() => localStorage.setItem("productId", id)}
               href="/shop/[productName]"

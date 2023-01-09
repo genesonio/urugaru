@@ -1,7 +1,86 @@
-.flex {
+.container {
   padding-top: 4rem;
   display: flex;
   align-self: center;
   justify-content: space-between;
-  width: 80%;
+  width: 65%;
+  gap: 5rem;
+}
+
+.image {
+  margin: 0;
+  padding: 0;
+  box-shadow: 5px 5px 20px #666;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10rem;
+  width: 100%;
+}
+
+.name {
+  margin: 0;
+  padding: 0;
+  text-shadow: #666 1px 1px 2px;
+}
+
+.price {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  color: #666;
+}
+
+.description {
+  margin: 0;
+  padding: 0;
+
+  color: #666;
+  text-align: center;
+  height: 20rem;
+  width: 17rem;
+  line-height: 2.5rem;
+  align-self: flex-end;
+}
+
+.labelQty {
+  color: #666;
+  margin: 0;
+  padding: 0;
+}
+
+.quantity::-webkit-inner-spin-button,
+.quantity::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+.quantity {
+  appearance: none;
+  width: 4.4rem;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  border: 1px solid #666;
+}
+
+.purchase {
+  margin-top: 1rem;
+  margin-left: 6rem;
+  height: 3.5rem;
+  width: 8.5rem;
+
+  background-color: #272727;
+  border: 0;
+  border-radius: 2rem;
+
+  font: bold 1rem sans-serif;
+  color: #fff;
+
+  cursor: pointer;
+}
+
+.purchase:hover,
+.purchase:active {
+  background-color: #666;
+  transition: all 0.3s ease-in-out;
 }

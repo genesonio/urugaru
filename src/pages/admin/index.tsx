@@ -1,23 +1,22 @@
-import login from "./login.module.css"
+import { getSession, signIn } from "next-auth/react"
+import type { GetServerSideProps } from "next/types"
+import { getServerAuthSession } from "../../server/common/get-server-auth-session"
+
+getServerAuthSession
 
 const Login = () => {
-  return (
-    <div className={login.flex}>
-      <h1>Olá</h1>
-      <form>
-        <label htmlFor="username">Username:</label>
-        <br />
-        <input type="text" id="username" name="username" />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <br />
-        <input type="password" id="password" name="password" />
-        <br />
-        <br />
-        <input type="button" value="Login" />
-      </form>
-    </div>
-  )
+  return <input type="button" onClick={() => signIn("google")} value="Google" />
+}
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const session = await getSession(context)
+  console.log(session)
+
+  return {
+    props: {
+      name: "Ge"
+    }
+  }
 }
 
 export default Login

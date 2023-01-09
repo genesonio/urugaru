@@ -64,6 +64,7 @@ model Print {
   id          String  @id @default(cuid())
   name        String
   url         String
+  description String
   price       Int?
   isAvailable Boolean @default(false)
 }

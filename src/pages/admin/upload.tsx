@@ -22,10 +22,10 @@ function Upload() {
     }
   }
 
-  const handlePrice = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
-    const isNum = !isNaN(newValue)
-    if (isNum) {
+    const isPositiveNum = !isNaN(newValue) && newValue > 0
+    if (isPositiveNum) {
       setPrice(newValue)
     }
   }
@@ -116,7 +116,7 @@ function Upload() {
             <label htmlFor="price">Price: </label>
             <input
               className={upload.price}
-              onChange={event => handlePrice(event)}
+              onChange={event => handleInputNum(event)}
               type="text"
               value={price}
               name="price"
