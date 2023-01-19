@@ -1,22 +1,12 @@
-import { getSession, signIn } from "next-auth/react"
-import type { GetServerSideProps } from "next/types"
-import { getServerAuthSession } from "../../server/common/get-server-auth-session"
+import { useSession } from "next-auth/react"
+import Upload from "../../components/Upload"
+import adminAuth from "../../utils/adminAuth"
 
-getServerAuthSession
-
-const Login = () => {
-  return <input type="button" onClick={() => signIn("google")} value="Google" />
+const Admin = () => {
+  const { data: session } = useSession()
+  const auth: boolean | undefined = adminAuth(session?.user?.email)
+  console.log(auth)
+  return <>{auth && <Upload />}</>
 }
 
-export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context)
-  console.log(session)
-
-  return {
-    props: {
-      name: "Ge"
-    }
-  }
-}
-
-export default Login
+export default Admin

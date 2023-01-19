@@ -8,16 +8,20 @@ export const printResource = router({
       name: z.string(),
       url: z.string(),
       price: z.number().optional(),
+      description: z.string(),
+      dimension: z.string(),
       isAvailable: z.boolean()
 
     }))
     .mutation(async ({ ctx, input }) => {
-      const { name, url, price, isAvailable } = input
+      const { name, url, price, description, dimension, isAvailable } = input
       await ctx.prisma.print.create({
         data: {
           name,
           url,
           price,
+          description,
+          dimension,
           isAvailable
         }
       })

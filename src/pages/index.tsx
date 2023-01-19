@@ -9,7 +9,7 @@ function Gallery() {
     <>
       <div className={galleryStyle.gallery}>
         {data?.map(({ name, url, isAvailable }, index) => {
-          if (isAvailable === true) return
+          if (isAvailable) return
           return <Print name={name} alt={name} url={url} key={index} />
         })}
       </div>

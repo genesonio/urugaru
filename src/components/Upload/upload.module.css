@@ -34,6 +34,7 @@
 
 .photoLb {
   width: fit-content;
+  cursor: pointer;
 }
 
 .photo {
@@ -41,6 +42,8 @@
   height: fit-content;
   background-color: transparent;
   border: 0;
+  cursor: pointer;
+  display: none;
 }
 
 .preview {
@@ -66,4 +69,17 @@
   border-bottom: 1px solid lightgray;
   outline: none;
   font-size: 1.2rem;
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  width: 8rem;
+  height: 2rem;
+  font: bold 1rem sans-serif;
+  color: #272727;
+  background-color: transparent;
+  border: 3px solid #666;
+  border-radius: 1rem;
+  cursor: pointer;
 }

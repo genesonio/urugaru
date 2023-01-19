@@ -9,9 +9,20 @@ function Upload() {
   const [available, setAvailable] = useState<boolean>(false) //
   const [price, setPrice] = useState<number>(0) // price
   const [preview, setPreview] = useState<string>("") // previewUrl to preview
-  const [name, setName] = useState<string>("") // Print name
   const [photo, setPhoto] = useState<File | string | Iterable<Uint8Array>>("")
   const mutation = trpc.print.upload.useMutation()
+  const [photoObj, setPhotoObj] = useState({
+    name: "",
+    description: "",
+    dimensions: ""
+  })
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setPhotoObj(prev => {
+      return { ...prev, [name]: value }
+    })
+  }
 
   const handlePage = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedPage = e.target.value
@@ -20,7 +31,7 @@ function Upload() {
     } else {
       setAvailable(false)
     }
-  }
+  } // *
 
   const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
@@ -28,7 +39,7 @@ function Upload() {
     if (isPositiveNum) {
       setPrice(newValue)
     }
-  }
+  } // *
 
   const handlePhoto = (e: ChangeEvent<HTMLInputElement>) => {
     if (
@@ -39,7 +50,7 @@ function Upload() {
       return
     setPhoto(e.target.files[0])
     setPreview(URL.createObjectURL(e.target.files[0]))
-  }
+  } // *
 
   const handleUpload = async () => {
     const url = await generateUploadUrl()
@@ -49,15 +60,21 @@ function Upload() {
       headers: new Headers({
         "Content-Type": "multipart/form*data"
       }),
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
-      body: photo
+
+      body: photo as BodyInit | null | undefined
     })
 
     const imgUrl = url.split("?")[0] as string
 
-    mutation.mutate({ name, price, url: imgUrl, isAvailable: available })
-  }
+    mutation.mutate({
+      name: photoObj.name,
+      price,
+      url: imgUrl,
+      isAvailable: available,
+      description: photoObj.description,
+      dimension: photoObj.dimensions
+    })
+  } // *
 
   return (
     <div className={upload.layout}>
@@ -96,21 +113,51 @@ function Upload() {
             width={186.3}
             height={263.58}
             src={preview}
-            alt={name}
+            alt={photoObj.name}
           />
         ) : null}
         <div style={{ display: "flex", gap: ".4rem", alignItems: "center" }}>
-          <label className={upload.nameLb} htmlFor="photoName">
+          <label className={upload.nameLb} htmlFor="name">
             Name:{" "}
           </label>
           <input
-            onChange={e => setName(e.target.value)}
+            onChange={e => handleChange(e)}
             className={upload.photoName}
             type="text"
-            name="photoName"
-            id="photoName"
+            name="name"
+            id="name"
           />
         </div>
+        <div style={{ display: "flex", gap: ".4rem", alignItems: "center" }}>
+          <label
+            className={upload.nameLb}
+            style={{ alignSelf: "start" }}
+            htmlFor="description"
+          >
+            Description:{" "}
+          </label>
+          <input
+            onChange={e => handleChange(e)}
+            className={upload.photoName}
+            style={{ height: "8rem" }}
+            type="text"
+            name="description"
+            id="description"
+          />
+        </div>
+        <div style={{ display: "flex", gap: ".4rem", alignItems: "center" }}>
+          <label className={upload.nameLb} htmlFor="dimensions">
+            Dimensions:{" "}
+          </label>
+          <input
+            onChange={e => handleChange(e)}
+            className={upload.photoName}
+            type="text"
+            name="dimensions"
+            id="dimensions"
+          />
+        </div>
+
         {available === true ? (
           <div style={{ display: "flex", gap: ".4rem", alignItems: "center" }}>
             <label htmlFor="price">Price: </label>
