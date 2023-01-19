@@ -1,10 +1,10 @@
 import Link from "next/link"
 import logoStyle from "./logo.module.css"
 
-const Logo = (props: { setSelected: (arg0: string) => void }) => {
+const Logo = () => {
   return (
     <h1 id="Logo" className={logoStyle.logo}>
-      <Link className={logoStyle.link} onClick={() => {props.setSelected("gallery")}} href="/">
+      <Link className={logoStyle.link} href="/">
         uruGaru
       </Link>
     </h1>

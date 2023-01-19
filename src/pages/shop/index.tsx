@@ -35,6 +35,7 @@ const Shop = () => {
             )
           }
         )}
+        {data !== undefined && data?.length < 1 && <p>Coming soon!</p>}
       </div>
     </>
   )

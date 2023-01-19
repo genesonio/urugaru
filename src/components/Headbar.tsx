@@ -1,14 +1,19 @@
-import { useState } from "react";
-import Logo from "./Logo/logo";
-import Navigation from "./NavBar/navBar";
+import { useEffect, useState } from "react"
+import Logo from "./Logo/logo"
+import Navigation from "./NavBar/navBar"
 
 const Headbar = () => {
-  const [ selected, setSelected ] = useState('gallery')
+  const [selected, setSelected] = useState("/")
+  useEffect(() => {
+    const page = window.location.pathname
+    setSelected(page)
+    console.log(page)
+  })
 
   return (
     <>
-      <Logo setSelected={setSelected} />
-      <Navigation selected={selected} setSelected={setSelected} />
+      <Logo />
+      <Navigation selected={selected} />
     </>
   )
 }
