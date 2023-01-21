@@ -6,8 +6,12 @@ import { useState } from "react"
 
 const Product = () => {
   const [quantity, setQuantity] = useState<number>(0)
+  const [id, setId] = useState<string>("")
 
-  const id = localStorage.getItem("productId") ?? ""
+  if (typeof window !== "undefined") {
+    setId(window.localStorage.getItem("productId") as string)
+  }
+
   const { data } = trpc.print.getOne.useQuery({ id })
   if (!data) return <h1>Art not found</h1>
   const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +40,7 @@ const Product = () => {
             tempora beatae reiciendis, alias vel?
           </p>
           <label className={product.labelQty} htmlFor="quantity">
-            Quantity:
+            Quantity: {quantity}
           </label>
           <input
             className={product.quantity}
