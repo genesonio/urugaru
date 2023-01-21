@@ -1,32 +1,44 @@
+import { motion } from "framer-motion"
 import Card from "../components/Card"
 import contactStyle from "../styles/contact.module.css"
 
 const Contact = () => {
   return (
     <>
-      <div className={contactStyle.gridC}>
+      <motion.div
+        initial={{ opacity: 0, scale: 1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          default: {
+            duration: 1,
+            delay: 0.5,
+            ease: "easeInOut"
+          }
+        }}
+        className={contactStyle.gridC}
+      >
         <p className={contactStyle.txt}>
-          Nisi aute aute pariatur minim proident id cillum commodo dolore elit
-          nisi occaecat id. Anim culpa minim in proident aliqua pariatur ut
-          irure esse laborum velit ad. Dolore dolor aliqua commodo consectetur
-          ex do id veniam tempor nisi. Eu irure voluptate laboris cupidatat
-          incididunt veniam aliquip adipisicing tempor. Incididunt excepteur
-          quis duis sit ad incididunt consequat. Incididunt ea Lorem
-          exercitation est et. In sint fugiat velit voluptate cupidatat eiusmod.
+          Hi, I am Guru or Garu. Thank you for visiting my site.
+          <br />
+          <br />
+          Please contact me for any needs related to my service through email.
+          <br />
+          <br />I am always willing to help and I am eager to hear your
+          suggestions or feedback!
         </p>
         <div className={contactStyle.email}>
           <p className={contactStyle.emailP}>e-mail:</p>
           <a
             className={contactStyle.emailLink}
-            href="mailto:exemplo@gmail.com"
+            href="mailto:urugaruart@gmail.com"
             rel="noreferrer"
             target="_blank"
           >
-            email@example.com
+            urugaruart@gmail.com
           </a>
         </div>
-        <Card className={contactStyle.rightBar} alt="right card" link="" />
-      </div>
+        <Card className={contactStyle.rightBar} alt=" " link="" />
+      </motion.div>
     </>
   )
 }

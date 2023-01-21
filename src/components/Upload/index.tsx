@@ -74,6 +74,8 @@ function Upload() {
       description: photoObj.description,
       dimension: photoObj.dimensions
     })
+
+    window.location.reload()
   } // *
 
   return (
@@ -178,8 +180,6 @@ function Upload() {
           className={upload.button}
         />
       </form>
-
-      {/* <input type="button" value="test" onClick={test} /> */}
     </div>
   )
 }

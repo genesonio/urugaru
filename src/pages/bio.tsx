@@ -1,32 +1,45 @@
+import { motion } from "framer-motion"
 import Card from "../components/Card"
 import bioStyle from "../styles/bio.module.css"
 
 const Bio = () => {
+  const born = new Date(2000, 3, 26)
+  const today = new Date()
+  const age = Math.floor(
+    Math.ceil(Math.abs(born.getTime() - today.getTime()) / (1000 * 3600 * 24)) /
+      365.25
+  )
   return (
     <>
-      <div className={bioStyle.gridBio}>
-        <Card className={bioStyle.leftCard} alt="left card" link="" />
-        <h3 className={bioStyle.name}>Raiane, 22</h3>
+      <motion.div
+        initial={{ opacity: 0, scale: 1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          default: {
+            duration: 1,
+            delay: 0.5,
+            ease: "easeInOut"
+          }
+        }}
+        className={bioStyle.gridBio}
+      >
+        <Card className={bioStyle.leftCard} alt=" " link="" />
+        <h3 className={bioStyle.name}>Garu, {age}</h3>
         <p className={bioStyle.bio}>
-          Laboris nisi velit qui adipisicing minim ullamco voluptate. Occaecat
-          commodo et Lorem veniam ipsum aliqua exercitation consectetur esse ea
-          sint. Reprehenderit incididunt id ut occaecat mollit et ad voluptate
-          magna. <br />
+          Garu, also known as Guru, is a talented Brazilian illustrator. From a
+          young age, she has always demonstrated a passion for drawing,
+          dedicating hours of her life to this activity.
           <br />
-          Commodo et id laborum do nisi incididunt quis minim do deserunt
-          pariatur cillum. Labore magna consectetur commodo ullamco duis
-          proident aliqua dolore minim magna. In eu fugiat sunt nulla laborum
-          Lorem consectetur officia minim duis et. <br />
+          <br />A lover of classic horror films and an admirer of nature, her
+          work as an illustrator is marked by fantasy, interests in folklore,
+          the macabre beauty, and more recently the representation of animals.{" "}
           <br />
-          Culpa eiusmod laborum sit occaecat laboris. Nisi reprehenderit
-          voluptate occaecat fugiat ad reprehenderit cupidatat id pariatur ad.
-          Cupidatat qui voluptate proident culpa irure proident elit sint minim
-          id commodo ipsum excepteur. Voluptate labore proident enim Lorem
-          aliquip. Consequat ut nostrud ea non commodo velit. Adipisicing duis
-          excepteur et consectetur est laboris officia incididunt deserunt duis
-          sunt tempor.
+          <br />
+          Using ink and paper, she seeks to blend graffiti to create blends with
+          high levels of details, giving life to her creations in a unique and
+          singular way.
         </p>
-      </div>
+      </motion.div>
     </>
   )
 }

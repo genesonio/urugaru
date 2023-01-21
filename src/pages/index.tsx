@@ -12,7 +12,7 @@ function Gallery() {
           if (isAvailable) return
           return <Print name={name} alt={name} url={url} key={index} />
         })}
-        {data !== undefined && data?.length < 1 && <p>Coming soon!</p>}
+        {data === undefined && <p>Coming soon!</p>}
       </div>
     </>
   )
