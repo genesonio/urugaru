@@ -7,7 +7,7 @@ const Headbar = () => {
   useEffect(() => {
     const page = window.location.pathname
     setSelected(page)
-  })
+  }, [])
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react"
+import type { FunctionComponent } from "react"
 import Image from "next/image"
 
 interface Props {
@@ -8,7 +8,15 @@ interface Props {
 }
 
 const Card: FunctionComponent<Props> = ({ className, alt, link }) => {
-  return <Image width={400} height={900} className={className} alt={alt} src={link} />
+  return (
+    <Image
+      width={400}
+      height={900}
+      className={className}
+      alt={alt}
+      src={link}
+    />
+  )
 }
 
 export default Card
