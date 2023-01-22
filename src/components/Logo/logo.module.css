@@ -5,6 +5,7 @@
 
 .link {
   text-decoration: none;
-  color: black;
+  color: #272727;
   font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }

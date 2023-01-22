@@ -10,15 +10,15 @@
   display: flex;
   list-style: none;
   justify-content: space-between;
-  /* gap: 16rem; */
 }
 
 .link {
   text-decoration: none;
-  color: darkgray;
-  font-family: sans-serif;
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 .active {
-  color: black;
+  color: #272727;
 }

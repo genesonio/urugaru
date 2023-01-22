@@ -39,7 +39,7 @@ const Print: FunctionComponent<Props> = ({ name, url, price = 0, alt }) => {
         className={printStyle.img}
         alt={alt}
         src={url}
-      ></Image>
+      />
       <h4 className={printStyle.name}>{name}</h4>
       {price > 0 ? <p className={printStyle.price}>R$ {price}</p> : null}
     </motion.div>
