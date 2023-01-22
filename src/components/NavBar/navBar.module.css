@@ -6,9 +6,11 @@
 .menuUl {
   margin: 0;
   padding: 0;
+  width: 80%;
   display: flex;
   list-style: none;
-  gap: 16rem;
+  justify-content: space-between;
+  /* gap: 16rem; */
 }
 
 .link {
