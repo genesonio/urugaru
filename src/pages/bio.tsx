@@ -16,8 +16,8 @@ const Bio = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{
           default: {
-            duration: 1,
-            delay: 0.5,
+            duration: 0.6,
+            delay: 0.2,
             ease: "easeInOut"
           }
         }}

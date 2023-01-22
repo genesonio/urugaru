@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import Logo from "./Logo/logo"
 import Navigation from "./NavBar/navBar"
-import Head from "next/head"
 
 const Headbar = () => {
   const [selected, setSelected] = useState("/")
@@ -12,9 +11,6 @@ const Headbar = () => {
 
   return (
     <>
-      <Head>
-        <title>uruGaru</title>
-      </Head>
       <Logo />
       <Navigation selected={selected} />
     </>

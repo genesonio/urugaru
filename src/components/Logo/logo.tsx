@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <h1 id="Logo" className={logoStyle.logo}>
       <Link className={logoStyle.link} href="/">
-        uruGaru
+        URUGARU
       </Link>
     </h1>
   )
