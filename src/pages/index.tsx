@@ -4,7 +4,6 @@ import { trpc } from "../utils/trpc"
 
 function Gallery() {
   const { data } = trpc.print.list.useQuery()
-  console.log(data)
   return (
     <>
       <div className={galleryStyle.gallery}>
