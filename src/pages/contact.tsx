@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import Card from "../components/Card"
+import Image from "next/image"
 import contactStyle from "../styles/contact.module.css"
 
 const Contact = () => {
@@ -40,7 +40,13 @@ const Contact = () => {
         <div className={contactStyle.email}>
           <p className={contactStyle.emailP}></p>
         </div>
-        <Card className={contactStyle.rightBar} alt=" " link="" />
+        <Image
+          className={contactStyle.rightBar}
+          width={400}
+          height={900}
+          alt=""
+          src=""
+        />
       </motion.div>
     </>
   )

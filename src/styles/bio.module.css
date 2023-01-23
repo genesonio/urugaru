@@ -4,22 +4,52 @@
   display: grid;
   grid-template-areas: "cl img tx tx cr";
   grid-template-columns: 0.3fr 1fr 1fr 1fr 0.3fr;
-  grid-template-rows: auto;
 }
 
 .leftCard {
   grid-area: img;
 }
 
-.name {
+.tx {
   grid-area: tx;
-  margin: 2.5rem auto 1rem;
-  font: 700 1.3rem sans-serif;
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+}
+
+.name {
+  align-self: center;
+  font: 700 1.3rem "Montserrat", sans-serif;
 }
 
 .bio {
-  grid-area: tx;
-  margin: 5rem;
-  font: 500 1rem sans-serif;
+  font: 500 1rem "Montserrat", sans-serif;
   text-align: justify;
+}
+
+@media (max-width: 950px) {
+  .gridBio {
+    grid-template-areas:
+      "cl img cr"
+      "cl tx cr";
+    grid-template-columns: 0.3fr 1fr 0.3fr;
+    justify-content: center;
+  }
+
+  .leftCard {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .leftCard {
+    width: 351px;
+  }
+  .tx {
+    align-items: center;
+  }
+
+  .bio {
+    width: 80%;
+  }
 }

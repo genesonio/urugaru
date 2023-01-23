@@ -1,8 +1,8 @@
 .gridC {
   display: grid;
-  grid-template-areas: "cl tx tx img cr";
+  grid-template-areas: "cl tx img cr";
   grid-template-rows: 10rem auto;
-  grid-template-columns: 0.3fr 1fr 1fr 1fr 0.3fr;
+  grid-template-columns: 0.3fr 2fr 1fr 0.3fr;
   margin-top: 3rem;
 }
 
@@ -24,4 +24,15 @@
 
 .rightBar {
   grid-area: img;
+}
+@media (max-width: 850px) {
+  .gridC {
+    grid-template-areas: "cl tx cr";
+    grid-template-rows: auto;
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+  }
+
+  .rightBar {
+    display: none;
+  }
 }

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import Card from "../components/Card"
+import Image from "next/image"
 import bioStyle from "../styles/bio.module.css"
 
 const Bio = () => {
@@ -23,22 +23,30 @@ const Bio = () => {
         }}
         className={bioStyle.gridBio}
       >
-        <Card className={bioStyle.leftCard} alt=" " link="" />
-        <h3 className={bioStyle.name}>Garu, {age}</h3>
-        <p className={bioStyle.bio}>
-          Garu, also known as Guru, is a talented Brazilian illustrator. From a
-          young age, she has always demonstrated a passion for drawing,
-          dedicating hours of her life to this activity.
-          <br />
-          <br />A lover of classic horror films and an admirer of nature, her
-          work as an illustrator is marked by fantasy, interests in folklore,
-          the macabre beauty, and more recently the representation of animals.{" "}
-          <br />
-          <br />
-          Using ink and paper, she seeks to blend graffiti to create blends with
-          high levels of details, giving life to her creations in a unique and
-          singular way.
-        </p>
+        <Image
+          className={bioStyle.leftCard}
+          width={400}
+          height={900}
+          alt=""
+          src=""
+        />
+        <div className={bioStyle.tx}>
+          <h3 className={bioStyle.name}>Garu, {age}</h3>
+          <p className={bioStyle.bio}>
+            Garu, also known as Guru, is a talented Brazilian illustrator. From
+            a young age, she has always demonstrated a passion for drawing,
+            dedicating hours of her life to this activity.
+            <br />
+            <br />A lover of classic horror films and an admirer of nature, her
+            work as an illustrator is marked by fantasy, interests in folklore,
+            the macabre beauty, and more recently the representation of animals.{" "}
+            <br />
+            <br />
+            Using ink and paper, she seeks to blend graffiti to create blends
+            with high levels of details, giving life to her creations in a
+            unique and singular way.
+          </p>
+        </div>
       </motion.div>
     </>
   )
