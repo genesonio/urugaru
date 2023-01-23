@@ -1,4 +1,7 @@
 .card {
+  grid-area: "print";
+  max-width: max-content;
+  min-width: fit-content;
   padding: 0;
   margin: 0;
   display: flex;
@@ -14,8 +17,8 @@
 }
 
 .name {
-  margin: 0;
   padding: 0;
+  color: #666;
 }
 
 .price {

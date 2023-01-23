@@ -1,8 +1,6 @@
 .gridC {
   display: grid;
-  grid-template-areas:
-    "cl tx tx img cr"
-    "cl mail mail img cr";
+  grid-template-areas: "cl tx tx img cr";
   grid-template-rows: 10rem auto;
   grid-template-columns: 0.3fr 1fr 1fr 1fr 0.3fr;
   margin-top: 3rem;
@@ -10,30 +8,18 @@
 
 .txt {
   grid-area: tx;
+  min-width: fit-content;
   height: 2rem;
   font-family: sans-serif;
   text-align: justify;
   width: 90%;
 }
 
-.email {
-  grid-area: mail;
-  display: flex;
-  align-content: center;
-  font-family: sans-serif;
-  font-size: large;
-}
-
 .emailLink {
   height: 1rem;
   text-decoration: none;
   color: black;
-}
-
-.emailP {
-  padding: 0;
-  margin: 0 0.3rem 0 0;
-  font: 1.2rem;
+  font-family: sans-serif;
 }
 
 .rightBar {

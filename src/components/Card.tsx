@@ -10,11 +10,13 @@ interface Props {
 const Card: FunctionComponent<Props> = ({ className, alt, link }) => {
   return (
     <Image
+      layout="responsive"
       width={400}
       height={900}
       className={className}
       alt={alt}
       src={link}
+      sizes="(min-width: 800) 200"
     />
   )
 }

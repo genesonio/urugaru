@@ -25,9 +25,9 @@ const Contact = () => {
           <br />
           <br />I am always willing to help and I am eager to hear your
           suggestions or feedback!
-        </p>
-        <div className={contactStyle.email}>
-          <p className={contactStyle.emailP}>e-mail:</p>
+          <br />
+          <br />
+          e-mail:{" "}
           <a
             className={contactStyle.emailLink}
             href="mailto:urugaruart@gmail.com"
@@ -36,6 +36,9 @@ const Contact = () => {
           >
             urugaruart@gmail.com
           </a>
+        </p>
+        <div className={contactStyle.email}>
+          <p className={contactStyle.emailP}></p>
         </div>
         <Card className={contactStyle.rightBar} alt=" " link="" />
       </motion.div>
