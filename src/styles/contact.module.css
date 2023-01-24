@@ -10,7 +10,7 @@
   grid-area: tx;
   min-width: fit-content;
   height: 2rem;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-align: justify;
   width: 90%;
 }
@@ -19,11 +19,12 @@
   height: 1rem;
   text-decoration: none;
   color: black;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .rightBar {
   grid-area: img;
+  display: none;
 }
 @media (max-width: 850px) {
   .gridC {
