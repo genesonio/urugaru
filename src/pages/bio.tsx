@@ -28,7 +28,7 @@ const Bio = () => {
           width={400}
           height={900}
           alt=""
-          src=""
+          src="https://urugaru.s3.sa-east-1.amazonaws.com/c986036e24b343491870c58ef0e2ab46"
         />
         <div className={bioStyle.tx}>
           <h3 className={bioStyle.name}>Garu, {age}</h3>
