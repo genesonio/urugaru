@@ -8,9 +8,16 @@ type Props = {
   url: string
   price?: number
   alt: string
+  isAvailable?: boolean
 }
 
-const Print: FunctionComponent<Props> = ({ name, url, price = 0, alt }) => {
+const Print: FunctionComponent<Props> = ({
+  name,
+  url,
+  price = 0,
+  alt,
+  isAvailable
+}) => {
   const delay = (): number => {
     return Math.random() * 0.4 + 0.1
   }
@@ -33,15 +40,18 @@ const Print: FunctionComponent<Props> = ({ name, url, price = 0, alt }) => {
       animate="visible"
       className={printStyle.card}
     >
-      <Image
-        width={270}
-        height={382}
-        className={printStyle.img}
-        alt={alt}
-        src={url}
-      />
+      <div className={printStyle.container}>
+        <Image
+          fill
+          objectFit="cover"
+          className={printStyle.img}
+          alt={alt}
+          src={url}
+          style={{ width: "100%", height: "100%" }}
+        />
+      </div>
       <h4 className={printStyle.name}>{name}</h4>
-      {price > 0 ? <p className={printStyle.price}>R$ {price}</p> : null}
+      {isAvailable ? <p className={printStyle.price}>R$ {price}</p> : null}
     </motion.div>
   )
 }

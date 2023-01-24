@@ -8,19 +8,19 @@
   width: 80%;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1850px) {
   .gallery {
     grid-template-areas: "print print print";
   }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1370px) {
   .gallery {
     grid-template-areas: "print print";
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 910px) {
   .gallery {
     grid-template-areas: "print";
     justify-content: center;
