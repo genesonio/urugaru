@@ -43,11 +43,10 @@ const Print: FunctionComponent<Props> = ({
       <div className={printStyle.container}>
         <Image
           fill
-          objectFit="cover"
           className={printStyle.img}
           alt={alt}
           src={url}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </div>
       <h4 className={printStyle.name}>{name}</h4>
