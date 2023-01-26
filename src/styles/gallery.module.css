@@ -24,6 +24,5 @@
   .gallery {
     grid-template-areas: "print";
     justify-content: center;
-    align-items: center;
   }
 }
