@@ -29,7 +29,7 @@ a {
 }
 
 @media (max-width: 400px) {
-  ::-webkit-scrollbar {
-    display: none !important;
+  html {
+    overflow-x: hidden;
   }
 }
