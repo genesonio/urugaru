@@ -19,8 +19,8 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <Head>
         <title>uruGaru</title>
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
           rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
         />
       </Head>
       <Headbar />

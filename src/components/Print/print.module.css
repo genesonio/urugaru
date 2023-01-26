@@ -1,6 +1,6 @@
 .card {
   grid-area: "print";
-  min-width: 25rem;
+  min-width: fit-content;
   padding: 0;
   margin: 0;
   display: flex;
