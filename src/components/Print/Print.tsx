@@ -18,7 +18,7 @@ const Print: FunctionComponent<Props> = ({
   alt,
   isAvailable
 }) => {
-  const delay = (): number => {
+  const duration = (): number => {
     return Math.random() * 0.4 + 0.1
   }
   return (
@@ -32,7 +32,9 @@ const Print: FunctionComponent<Props> = ({
           scale: 1,
           opacity: 1,
           transition: {
-            delay: delay()
+            delay: 0.2,
+            duration: duration(),
+            ease: "easeInOut"
           }
         }
       }}
