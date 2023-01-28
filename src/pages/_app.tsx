@@ -26,7 +26,13 @@ const MyApp: AppType<{ session: Session | null }> = ({
       </Head>
       <Headbar />
       <Component {...pageProps} />
-      <Analytics />
+      <Analytics
+        beforeSend={event => {
+          if (event.url.includes("/admin")) return null
+          if (event.url.includes("/admin/login")) return null
+          return event
+        }}
+      />
       <Footer />
     </SessionProvider>
   )
