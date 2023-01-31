@@ -32,7 +32,6 @@ const Print: FunctionComponent<Props> = ({
           scale: 1,
           opacity: 1,
           transition: {
-            delay: 0.2,
             duration: duration(),
             ease: "easeInOut"
           }
