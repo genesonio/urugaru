@@ -44,6 +44,7 @@ const Print: FunctionComponent<Props> = ({
     >
       <div className={printStyle.container}>
         <Image
+          priority
           fill
           className={printStyle.img}
           alt={alt}
