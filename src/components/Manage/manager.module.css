@@ -1,140 +1,32 @@
 .list {
   display: flex;
-  width: 80%;
-  align-self: center;
-
-  align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
 
-  justify-content: space-evenly;
+  align-self: center;
 
-  padding-left: 1rem;
+  width: 80%;
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  cursor: pointer;
+
+  width: 20rem;
+
+  padding: 1rem;
+
+  align-items: center;
 
   border: 1px solid #666;
   border-radius: 1rem;
-
-  height: 15rem;
-
-  margin-bottom: 0.4rem;
 }
 
 .imageWrapper {
   width: 13rem;
   height: 13rem;
   position: relative;
-}
-
-.printChar {
-  display: grid;
-  grid-template-areas:
-    "name    dimension"
-    "description store"
-    "description store";
-
-  grid-auto-rows: 1fr 1fr 1fr;
-  grid-column: 1fr 1fr;
-  gap: 1rem;
-}
-
-.name {
-  grid-area: name;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.store {
-  grid-area: store;
-  display: flex;
-  gap: 3rem;
-}
-
-.isAvailable {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.description {
-  grid-area: description;
-  display: flex;
-  gap: 0.3rem;
-
-  align-items: center;
-}
-
-.dimension {
-  grid-area: dimension;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.price {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 5rem;
-}
-
-.button {
-  font-size: larger;
-  background-color: transparent;
-
-  cursor: pointer;
-
-  border: 2px solid #666;
-  border-radius: 2rem;
-  padding: 0.3rem 0.6rem;
-}
-
-.button:hover {
-  background-color: #666;
-}
-
-.label {
-  font-size: larger;
-}
-
-.input {
-  background-color: transparent;
-  outline: none;
-  border-radius: 2rem;
-  padding-inline: 0.3rem;
-
-  font-size: large;
-  border: 2px solid #666;
-}
-
-.textarea {
-  outline: none;
-  resize: none;
-  background-color: transparent;
-  border: 2px solid #666;
-  border-radius: 1rem;
-  padding: 0.3rem;
-  height: 6rem;
-  width: 11.3rem;
-  font-size: large;
-}
-
-.inputPrice {
-  background-color: transparent;
-  outline: none;
-  border-radius: 2rem;
-  padding-inline: 0.3rem;
-
-  font-size: large;
-  border: 2px solid #666;
-
-  width: 5rem;
-}
-
-.available {
-  cursor: pointer;
 }
