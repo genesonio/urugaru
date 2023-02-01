@@ -21,8 +21,8 @@ const Shop = () => {
                 className={shopStyle.link}
                 key={index}
                 onClick={() => localStorage.setItem("productId", id)}
-                href="/shop/[productName]"
-                as={`/shop/${name}`}
+                href="/shop/[imageId]"
+                as={`/shop/${id}`}
               >
                 <Print
                   price={price}
@@ -35,7 +35,6 @@ const Shop = () => {
             )
           }
         )}
-        {data !== undefined && data?.length < 1 && <p>Coming soon!</p>}
       </div>
     </>
   )

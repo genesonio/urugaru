@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { z } from "zod"
 
-import { router, publicProcedure } from "../trpc";
+import { router, publicProcedure } from "../trpc"
 
 export const printResource = router({
   upload: publicProcedure
@@ -33,5 +33,30 @@ export const printResource = router({
   getOne: publicProcedure.input(z.object({ id: z.string() })).query(async ({ ctx, input }) => {
     const item = await ctx.prisma.print.findUnique({ where: { id: input.id } })
     return item
+  }),
+  update: publicProcedure.input(z.object({
+    id: z.string(),
+    name: z.string(),
+    price: z.number().optional(),
+    description: z.string(),
+    dimension: z.string(),
+    isAvailable: z.boolean()
+  })).mutation(async ({ ctx, input }) => {
+    const { id, name, price, description, dimension, isAvailable } = input
+    await ctx.prisma.print.update({
+      data: {
+        name,
+        price,
+        description,
+        dimension,
+        isAvailable
+      },
+      where: {
+        id
+      }
+    })
+  }),
+  delete: publicProcedure.input(z.object({ id: z.string() })).query(async ({ ctx, input }) => {
+    await ctx.prisma.print.delete({ where: { id: input.id } })
   })
-});
+})

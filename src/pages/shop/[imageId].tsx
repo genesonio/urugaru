@@ -2,19 +2,17 @@ import { trpc } from "../../utils/trpc"
 import product from "./product.module.css"
 import Image from "next/image"
 import type { ChangeEvent } from "react"
+import { useEffect } from "react"
 import { useState } from "react"
 
 const Product = () => {
   const [quantity, setQuantity] = useState<number>(0)
   const [id, setId] = useState<string>("")
 
-  if (typeof window !== "undefined") {
-    setId(window.localStorage.getItem("productId") as string)
-  }
+  useEffect(() => setId(window.location.pathname.slice(6)), [])
 
   const { data } = trpc.print.getOne.useQuery({ id })
 
-  if (!data) return <h1>Art not found</h1>
   const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
     if (isNaN(newValue)) setQuantity(0)
@@ -22,6 +20,7 @@ const Product = () => {
     if (isPositiveNum) setQuantity(newValue)
   }
 
+  if (!data) return null
   return (
     <>
       <div className={product.container}>
@@ -35,12 +34,7 @@ const Product = () => {
         <div className={product.flex}>
           <h1 className={product.name}>{data.name}</h1>
           <p className={product.price}>$ {data.price?.toFixed(2)}</p>
-          <p className={product.description}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus
-            neque, aliquid autem odio ipsum consectetur. Consequatur dolores
-            suscipit illum repudiandae fugiat! Magnam maxime quaerat veritatis
-            tempora beatae reiciendis, alias vel?
-          </p>
+          <p className={product.description}>{data.description}</p>
           <label className={product.labelQty} htmlFor="quantity">
             Quantity: {quantity}
           </label>

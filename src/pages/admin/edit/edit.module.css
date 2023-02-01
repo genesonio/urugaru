@@ -1,0 +1,88 @@
+.edit {
+  width: 80%;
+  margin-top: 5rem;
+  align-self: center;
+
+  display: flex;
+
+  gap: 5rem;
+}
+
+.imageWrapper {
+  position: relative;
+
+  border-radius: 2rem;
+
+  width: 25rem;
+  height: 25rem;
+}
+
+.image {
+  object-fit: contain;
+
+  border-radius: 1rem;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 25rem;
+}
+
+.feature {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 19rem;
+}
+
+.label {
+  font-size: larger;
+}
+
+.input {
+  outline: transparent;
+  border: 1px solid #666;
+  border-radius: 1rem;
+  background-color: transparent;
+  padding-block: 0.3rem;
+  padding-inline: 0.6rem;
+}
+
+.textArea {
+  outline: transparent;
+  background-color: transparent;
+
+  padding-block: 0.3rem;
+  padding-inline-start: 0.6rem;
+
+  resize: none;
+
+  border: 1px solid #666;
+  border-radius: 1rem;
+
+  height: 6rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 19rem;
+}
+
+.button {
+  outline: transparent;
+
+  border: 1px solid #666;
+  border-radius: 2rem;
+
+  padding-block: 0.75rem;
+  padding-inline: 1.5rem;
+
+  font-size: larger;
+}
