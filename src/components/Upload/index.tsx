@@ -10,12 +10,12 @@ function Upload() {
   const [price, setPrice] = useState<number>(0) // price
   const [preview, setPreview] = useState<string>("") // previewUrl to preview
   const [photo, setPhoto] = useState<File | string | Iterable<Uint8Array>>("")
-  const mutation = trpc.print.upload.useMutation()
   const [photoObj, setPhotoObj] = useState({
     name: "",
     description: "",
     dimensions: ""
   })
+  const mutation = trpc.print.upload.useMutation()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -31,7 +31,7 @@ function Upload() {
     } else {
       setAvailable(false)
     }
-  } // *
+  }
 
   const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
@@ -39,7 +39,7 @@ function Upload() {
     if (isPositiveNum) {
       setPrice(newValue)
     }
-  } // *
+  }
 
   const handlePhoto = (e: ChangeEvent<HTMLInputElement>) => {
     if (
@@ -50,7 +50,7 @@ function Upload() {
       return
     setPhoto(e.target.files[0])
     setPreview(URL.createObjectURL(e.target.files[0]))
-  } // *
+  }
 
   const handleUpload = async () => {
     const url = await generateUploadUrl()
@@ -76,12 +76,10 @@ function Upload() {
     })
 
     window.location.reload()
-  } // *
+  }
 
   return (
     <div className={upload.layout}>
-      <h1>Upload</h1>
-
       <form className={upload.form}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <label htmlFor="page">Upload to </label>

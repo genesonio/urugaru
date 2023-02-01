@@ -13,6 +13,7 @@ const Product = () => {
   }
 
   const { data } = trpc.print.getOne.useQuery({ id })
+
   if (!data) return <h1>Art not found</h1>
   const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
@@ -20,6 +21,7 @@ const Product = () => {
     const isPositiveNum = !isNaN(newValue) && newValue > 0
     if (isPositiveNum) setQuantity(newValue)
   }
+
   return (
     <>
       <div className={product.container}>
