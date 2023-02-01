@@ -56,7 +56,7 @@ export const printResource = router({
       }
     })
   }),
-  delete: publicProcedure.input(z.object({ id: z.string() })).query(async ({ ctx, input }) => {
+  delete: publicProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
     await ctx.prisma.print.delete({ where: { id: input.id } })
   })
 })

@@ -34,13 +34,14 @@ export const deletePhoto = async fileUrl => {
   const filename = fileUrl.slice(43)
 
   console.log(filename)
-  /* const params = {
+  const params = {
     Bucket: bucketName,
     Key: filename
   }
 
-  s3.deleteObject(params, (err, data) => {
-    if (err) console.log(err, err.stack)
-    console.log(data)
-  }) */
+  await s3
+    .deleteObject(params, () => {
+      console.log("deleted")
+    })
+    .promise()
 }

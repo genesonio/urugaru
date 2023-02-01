@@ -3,6 +3,7 @@ import { trpc } from "../../../utils/trpc"
 import style from "./edit.module.css"
 import Image from "next/image"
 import type { Print } from "../../../types/Print"
+import { deletePhoto } from "../../../libs/s3Client.mjs"
 
 const Edit = () => {
   const [image, setImage] = useState<Print>({
@@ -17,6 +18,7 @@ const Edit = () => {
 
   const { data } = trpc.print.getOne.useQuery({ id: image.id })
   const update = trpc.print.update.useMutation()
+  const del = trpc.print.delete.useMutation()
 
   useEffect(() => {
     if (data) setImage(data)
@@ -32,14 +34,22 @@ const Edit = () => {
       | (EventTarget & HTMLInputElement)
       | (EventTarget & HTMLTextAreaElement)
   ) => {
-    if (target.id === "price") parseInt(target.value)
-    setImage({ ...image, [target.id]: target.value })
+    const key = target.id
+    const value = target.value
+    if (key == "price") setImage({ ...image, [key]: Number(value) })
+    else setImage({ ...image, [key]: value })
   }
 
   const handleUpdate = () => {
     update.mutate(image)
 
-    window.location.reload()
+    /* window.location.reload() */
+  }
+
+  const handleDelete = () => {
+    deletePhoto(image.url)
+    del.mutate({ id: image.id })
+    window.location.pathname = "/admin"
   }
 
   if (!image) return null
@@ -109,7 +119,6 @@ const Edit = () => {
             type="checkbox"
             id="available"
             defaultChecked={image.isAvailable}
-            checked={image.isAvailable}
             onClick={() =>
               setImage({ ...image, isAvailable: !image.isAvailable })
             }
@@ -119,9 +128,18 @@ const Edit = () => {
           <button onClick={() => handleUpdate()} className={style.button}>
             Save
           </button>
-          <button className={style.button}>Delete</button>
+          <button onClick={() => handleDelete()} className={style.button}>
+            Delete
+          </button>
         </div>
       </div>
+      <button
+        className={style.button}
+        style={{ height: "3rem" }}
+        onClick={() => (window.location.pathname = "/admin")}
+      >
+        Back
+      </button>
     </div>
   )
 }
