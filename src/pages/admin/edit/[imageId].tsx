@@ -44,7 +44,7 @@ const Edit = () => {
   const handleUpdate = () => {
     update.mutate(image)
 
-    /* window.location.reload() */
+    window.location.reload()
   }
 
   const handleDelete = () => {
@@ -75,7 +75,7 @@ const Edit = () => {
         </div>
         <div className={style.feature}>
           <label className={style.label} htmlFor="description">
-            Description:{" "}
+            Description:
           </label>
           <textarea
             className={style.textArea}
@@ -112,15 +112,32 @@ const Edit = () => {
             onChange={({ target }) => handleChange(target)}
           />
         </div>
-        <div style={{ display: "flex", gap: "1.2 rem" }}>
-          <label className={style.label} htmlFor="available">
+        <div
+          style={{
+            display: "flex",
+            gap: "1.2 rem",
+            width: "19rem",
+            justifyContent: "space-between"
+          }}
+        >
+          <label className={style.label} htmlFor="shop">
             Shop:
           </label>
           <input
             type="checkbox"
-            id="available"
+            id="shop"
             defaultChecked={image.toShop}
             onClick={() => setImage({ ...image, toShop: !image.toShop })}
+          />
+
+          <label className={style.label} htmlFor="gallery">
+            Gallery:
+          </label>
+          <input
+            type="checkbox"
+            id="gallery"
+            defaultChecked={image.toGallery}
+            onClick={() => setImage({ ...image, toGallery: !image.toGallery })}
           />
         </div>
         <div className={style.buttons}>

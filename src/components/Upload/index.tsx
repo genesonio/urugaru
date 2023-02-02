@@ -6,14 +6,15 @@ import { generateUploadUrl } from "../../libs/s3Client.mjs"
 import { trpc } from "../../utils/trpc"
 
 function Upload() {
-  const [available, setAvailable] = useState<boolean>(false) //
   const [price, setPrice] = useState<number>(0) // price
   const [preview, setPreview] = useState<string>("") // previewUrl to preview
   const [photo, setPhoto] = useState<File | string | Iterable<Uint8Array>>("")
   const [photoObj, setPhotoObj] = useState({
     name: "",
     description: "",
-    dimensions: ""
+    dimension: "",
+    toShop: false,
+    toGallery: false
   })
   const mutation = trpc.print.upload.useMutation()
 
@@ -22,15 +23,6 @@ function Upload() {
     setPhotoObj(prev => {
       return { ...prev, [name]: value }
     })
-  }
-
-  const handlePage = (e: ChangeEvent<HTMLSelectElement>) => {
-    const selectedPage = e.target.value
-    if (selectedPage === "shop") {
-      setAvailable(true)
-    } else {
-      setAvailable(false)
-    }
   }
 
   const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
@@ -67,13 +59,9 @@ function Upload() {
     const imgUrl = url.split("?")[0] as string
 
     mutation.mutate({
-      name: photoObj.name,
+      ...photoObj,
       price,
-      url: imgUrl,
-      toShop: available,
-      toGallery: true,
-      description: photoObj.description,
-      dimension: photoObj.dimensions
+      url: imgUrl
     })
 
     window.location.reload()
@@ -82,21 +70,49 @@ function Upload() {
   return (
     <div className={upload.layout}>
       <form className={upload.form}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <label htmlFor="page">Upload to </label>
-          <select
-            onChange={event => handlePage(event)}
-            className={upload.select}
-            name="page"
-            id="page"
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem"
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              width: "8rem",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}
           >
-            <option className={upload.option} value="gallery">
-              Gallery
-            </option>
-            <option className={upload.option} value="shop">
-              Shop
-            </option>
-          </select>
+            <label htmlFor="shop">To Shop</label>
+            <input
+              type="checkbox"
+              name="shop"
+              id="shop"
+              onChange={() =>
+                setPhotoObj({ ...photoObj, toShop: !photoObj.toShop })
+              }
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              width: "8rem",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}
+          >
+            <label htmlFor="gallery">To Gallery</label>
+            <input
+              type="checkbox"
+              name="gallery"
+              id="gallery"
+              onChange={() =>
+                setPhotoObj({ ...photoObj, toGallery: !photoObj.toGallery })
+              }
+            />
+          </div>
         </div>
         <label className={upload.photoLb} htmlFor="photo">
           Photo:
@@ -147,19 +163,19 @@ function Upload() {
           />
         </div>
         <div style={{ display: "flex", gap: ".4rem", alignItems: "center" }}>
-          <label className={upload.nameLb} htmlFor="dimensions">
-            Dimensions:{" "}
+          <label className={upload.nameLb} htmlFor="dimension">
+            Dimension:
           </label>
           <input
             onChange={e => handleChange(e)}
             className={upload.photoName}
             type="text"
-            name="dimensions"
-            id="dimensions"
+            name="dimension"
+            id="dimension"
           />
         </div>
 
-        {available === true ? (
+        {photoObj.toShop === true ? (
           <div style={{ display: "flex", gap: ".4rem", alignItems: "center" }}>
             <label htmlFor="price">Price: </label>
             <input

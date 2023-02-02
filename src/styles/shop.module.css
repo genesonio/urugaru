@@ -1,9 +1,29 @@
 .shop {
   display: grid;
-  grid-template-areas: "a a a a";
-  grid-auto-rows: 30rem;
-  gap: 1rem;
+  grid-template-areas: "print print print print";
+  grid-auto-rows: min-content;
+  gap: 3rem;
   padding-top: 4rem;
   margin: auto;
   width: 80%;
+}
+
+@media (max-width: 1850px) {
+  .shop {
+    grid-template-areas: "print print print";
+  }
+}
+
+@media (max-width: 1370px) {
+  .shop {
+    grid-template-areas: "print print";
+  }
+}
+
+@media (max-width: 910px) {
+  .shop {
+    grid-template-areas: "print";
+    justify-content: center;
+    width: 100vw;
+  }
 }

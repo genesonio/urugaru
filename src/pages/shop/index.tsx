@@ -17,7 +17,6 @@ const Shop = () => {
               <Link
                 className={shopStyle.link}
                 key={index}
-                onClick={() => localStorage.setItem("productId", id)}
                 href="/shop/[imageId]"
                 as={`/shop/${id}`}
               >
@@ -27,7 +26,7 @@ const Shop = () => {
                   name={name}
                   url={url}
                   key={index}
-                  toShop={toShop}
+                  showPrice={toShop}
                 />
               </Link>
             )

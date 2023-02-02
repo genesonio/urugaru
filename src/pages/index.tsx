@@ -6,13 +6,24 @@ function Gallery() {
   const { data } = trpc.print.list.useQuery()
   return (
     <>
+      {!data && (
+        <h1
+          style={{
+            alignSelf: "center",
+            justifySelf: "center",
+            paddingTop: "10rem"
+          }}
+        >
+          Loading...
+        </h1>
+      )}
       <div className={galleryStyle.gallery}>
-        {data?.map(({ name, url, toGallery, toShop }, index) => {
+        {data?.map(({ name, url, toGallery }, index) => {
           if (!toGallery) return
           return (
             <Print
               name={name}
-              toShop={toShop}
+              showPrice={!toGallery}
               alt={name}
               url={url}
               key={index}

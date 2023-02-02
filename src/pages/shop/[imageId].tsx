@@ -24,34 +24,43 @@ const Product = () => {
   return (
     <>
       <div className={product.container}>
-        <Image
-          className={product.image}
-          width={324}
-          height={458}
-          src={data.url}
-          alt={data.name}
-        />
+        <div className={product.imageWrapper}>
+          <Image
+            priority
+            fill
+            className={product.image}
+            src={data.url}
+            alt={data.name}
+          />
+        </div>
         <div className={product.flex}>
           <h1 className={product.name}>{data.name}</h1>
           <p className={product.price}>$ {data.price?.toFixed(2)}</p>
           <p className={product.description}>{data.description}</p>
-          <label className={product.labelQty} htmlFor="quantity">
-            Quantity: {quantity}
-          </label>
-          <input
-            className={product.quantity}
-            onChange={e => handleInputNum(e)}
-            type="text"
-            inputMode="numeric"
-            name="quantity"
-            id="quantity"
-          />
-          <input
-            className={product.purchase}
-            type="button"
-            id="purchase"
-            value="PURCHASE"
-          />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center"
+            }}
+          >
+            <label className={product.labelQty} htmlFor="quantity">
+              Quantity:
+            </label>
+            <input
+              className={product.quantity}
+              onChange={e => handleInputNum(e)}
+              type="text"
+              inputMode="numeric"
+              name="quantity"
+              id="quantity"
+            />
+            <input
+              className={product.purchase}
+              type="button"
+              id="purchase"
+              value="PURCHASE"
+            />
+          </div>
         </div>
       </div>
     </>

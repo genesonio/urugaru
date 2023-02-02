@@ -8,10 +8,16 @@ type Props = {
   url: string
   price?: number
   alt: string
-  toShop: boolean
+  showPrice: boolean
 }
 
-const Print: FunctionComponent<Props> = ({ name, url, price, alt, toShop }) => {
+const Print: FunctionComponent<Props> = ({
+  name,
+  url,
+  price,
+  alt,
+  showPrice
+}) => {
   const duration = (): number => {
     return Math.random() * 0.4 + 0.1
   }
@@ -48,7 +54,7 @@ const Print: FunctionComponent<Props> = ({ name, url, price, alt, toShop }) => {
         />
       </div>
       <h4 className={printStyle.name}>{name}</h4>
-      {toShop ? <p className={printStyle.price}>R$ {price}</p> : null}
+      {showPrice ? <p className={printStyle.price}>$ {price}</p> : null}
     </motion.div>
   )
 }

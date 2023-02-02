@@ -1,23 +1,33 @@
 .container {
-  padding-top: 4rem;
-  display: flex;
+  margin-top: 4rem;
+  display: grid;
+  grid-template-areas: "image info";
   align-self: center;
-  justify-content: space-between;
   width: 65%;
   gap: 5rem;
+}
+
+.imageWrapper {
+  grid-area: image;
+  position: relative;
+
+  width: 30rem;
+  height: 30rem;
 }
 
 .image {
   margin: 0;
   padding: 0;
   box-shadow: 5px 5px 20px #666;
+  object-fit: cover;
+  border-radius: 1rem;
 }
 
 .flex {
+  grid-area: info;
   display: flex;
   flex-direction: column;
-  padding-right: 10rem;
-  width: 100%;
+  width: 25rem;
 }
 
 .name {
@@ -48,6 +58,8 @@
   color: #666;
   margin: 0;
   padding: 0;
+
+  font-size: large;
 }
 
 .quantity::-webkit-inner-spin-button,
@@ -56,15 +68,17 @@
 }
 
 .quantity {
+  margin-left: 1rem;
   appearance: none;
   width: 4.4rem;
   background-color: transparent;
   border-radius: 0.5rem;
   border: 1px solid #666;
+
+  font-size: large;
 }
 
 .purchase {
-  margin-top: 1rem;
   margin-left: 6rem;
   height: 3.5rem;
   width: 8.5rem;
@@ -79,8 +93,32 @@
   cursor: pointer;
 }
 
-.purchase:hover,
-.purchase:active {
+.purchase:hover {
   background-color: #666;
   transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 1330px) {
+  .container {
+    grid-template-areas:
+      "image"
+      "info";
+    justify-items: center;
+    width: 80vw;
+  }
+}
+
+@media (max-width: 720px) {
+  .imageWrapper {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .flex {
+    width: 80vw;
+  }
+
+  .purchase {
+    margin-left: auto;
+  }
 }

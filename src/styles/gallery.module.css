@@ -1,7 +1,7 @@
 .gallery {
   display: grid;
   grid-template-areas: "print print print print";
-  grid-auto-rows: 30rem;
+  grid-auto-rows: min-content;
   gap: 1rem;
   padding-top: 4rem;
   margin: auto;
