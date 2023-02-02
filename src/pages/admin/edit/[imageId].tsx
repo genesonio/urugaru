@@ -13,7 +13,8 @@ const Edit = () => {
     description: "",
     dimension: "",
     price: 0,
-    isAvailable: false
+    toShop: false,
+    toGallery: true
   })
 
   const { data } = trpc.print.getOne.useQuery({ id: image.id })
@@ -113,15 +114,13 @@ const Edit = () => {
         </div>
         <div style={{ display: "flex", gap: "1.2 rem" }}>
           <label className={style.label} htmlFor="available">
-            Available:
+            Shop:
           </label>
           <input
             type="checkbox"
             id="available"
-            defaultChecked={image.isAvailable}
-            onClick={() =>
-              setImage({ ...image, isAvailable: !image.isAvailable })
-            }
+            defaultChecked={image.toShop}
+            onClick={() => setImage({ ...image, toShop: !image.toShop })}
           />
         </div>
         <div className={style.buttons}>

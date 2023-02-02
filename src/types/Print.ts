@@ -5,5 +5,6 @@ export interface Print {
   description: string
   dimension: string
   price: number
-  isAvailable: boolean
+  toShop: boolean
+  toGallery: boolean
 }

@@ -11,11 +11,8 @@ const Shop = () => {
     <>
       <div className={shopStyle.shop}>
         {data?.map(
-          (
-            { id, url, name, price, isAvailable },
-            index: Key | null | undefined
-          ) => {
-            if (!isAvailable || !price) return
+          ({ id, url, name, price, toShop }, index: Key | null | undefined) => {
+            if (!toShop) return
             return (
               <Link
                 className={shopStyle.link}
@@ -30,6 +27,7 @@ const Shop = () => {
                   name={name}
                   url={url}
                   key={index}
+                  toShop={toShop}
                 />
               </Link>
             )

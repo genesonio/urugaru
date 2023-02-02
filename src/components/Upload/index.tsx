@@ -70,7 +70,8 @@ function Upload() {
       name: photoObj.name,
       price,
       url: imgUrl,
-      isAvailable: available,
+      toShop: available,
+      toGallery: true,
       description: photoObj.description,
       dimension: photoObj.dimensions
     })
