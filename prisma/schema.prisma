@@ -73,5 +73,6 @@ model Print {
   description String  @db.Text
   dimension   String
   price       Int     @default(0)
-  isAvailable Boolean @default(false)
+  toShop      Boolean @default(false)
+  toGallery   Boolean @default(true)
 }
