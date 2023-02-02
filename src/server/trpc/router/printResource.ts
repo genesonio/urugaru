@@ -10,11 +10,12 @@ export const printResource = router({
       price: z.number().optional(),
       description: z.string(),
       dimension: z.string(),
-      isAvailable: z.boolean()
+      toShop: z.boolean(),
+      toGallery: z.boolean()
 
     }))
     .mutation(async ({ ctx, input }) => {
-      const { name, url, price, description, dimension, isAvailable } = input
+      const { name, url, price, description, dimension, toShop, toGallery } = input
       await ctx.prisma.print.create({
         data: {
           name,
@@ -22,7 +23,8 @@ export const printResource = router({
           price,
           description,
           dimension,
-          isAvailable
+          toShop,
+          toGallery
         }
       })
     }),
@@ -40,16 +42,18 @@ export const printResource = router({
     price: z.number().optional(),
     description: z.string(),
     dimension: z.string(),
-    isAvailable: z.boolean()
+    toShop: z.boolean(),
+    toGallery: z.boolean()
   })).mutation(async ({ ctx, input }) => {
-    const { id, name, price, description, dimension, isAvailable } = input
+    const { id, name, price, description, dimension, toShop, toGallery } = input
     await ctx.prisma.print.update({
       data: {
         name,
         price,
         description,
         dimension,
-        isAvailable
+        toShop,
+        toGallery
       },
       where: {
         id
