@@ -1,8 +1,5 @@
 .card {
-  grid-area: "print";
-  min-width: fit-content;
-  padding: 0;
-  margin: 0;
+  max-width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,11 +10,6 @@
   position: relative;
   width: 23.75rem;
   height: 28.5rem;
-}
-
-.img {
-  margin: 0;
-  padding: 0;
 }
 
 .name {
@@ -31,7 +23,7 @@
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  color: rgb(146, 146, 146);
+  color: #666;
 }
 
 @media (max-width: 400px) {
