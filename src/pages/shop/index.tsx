@@ -1,7 +1,7 @@
 import Link from "next/link"
 import type { Key } from "react"
 import Print from "../../components/Print/Print"
-import shopStyle from "../../styles/shop.module.css"
+import shopStyle from "./shop.module.css"
 import { trpc } from "../../utils/trpc"
 
 const Shop = () => {

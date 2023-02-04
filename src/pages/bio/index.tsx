@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
-import bioStyle from "../styles/bio.module.css"
+import bioStyle from "./bio.module.css"
 
 const Bio = () => {
   const born = new Date(2000, 3, 26)
