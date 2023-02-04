@@ -1,20 +1,18 @@
 .shop {
   display: grid;
   grid-template-areas: "print print print print";
-  grid-auto-rows: min-content;
-  gap: 3rem;
-  padding-top: 4rem;
-  margin: auto;
-  width: 80%;
+  width: 90vw;
+
+  justify-content: space-between;
 }
 
-@media (max-width: 1850px) {
+@media (max-width: 1370px) {
   .shop {
     grid-template-areas: "print print print";
   }
 }
 
-@media (max-width: 1370px) {
+@media (max-width: 1300px) {
   .shop {
     grid-template-areas: "print print";
   }
