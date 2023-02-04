@@ -21,6 +21,10 @@
   font-weight: 400;
 }
 
+.link:hover {
+  color: #272727;
+}
+
 .active {
   color: #000;
 }
