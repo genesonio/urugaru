@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import Logo from "./Logo/logo"
-import Navigation from "./NavBar/navBar"
+import Logo from "./Logo"
+import Navigation from "./NavBar"
 
 const Headbar = () => {
   const [selected, setSelected] = useState("/")

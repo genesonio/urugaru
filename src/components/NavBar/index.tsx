@@ -20,7 +20,6 @@ function Navigation(props: { selected: string }) {
           bio
         </Link>
         <Link
-          style={{ pointerEvents: "none" }}
           id={props.selected === "/shop" ? "active" : ""}
           className={`${navBarStyles.link}`}
           href="/shop"

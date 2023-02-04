@@ -1,6 +1,5 @@
 import Image from "next/image"
-import type { ChangeEvent } from "react"
-import { useState } from "react"
+import { useState, ChangeEvent } from "react"
 import upload from "./upload.module.css"
 import { generateUploadUrl } from "../../libs/s3Client.mjs"
 import { trpc } from "../../utils/trpc"
