@@ -1,9 +1,7 @@
 import { trpc } from "../../utils/trpc"
 import product from "./product.module.css"
 import Image from "next/image"
-import type { ChangeEvent } from "react"
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useState, ChangeEvent } from "react"
 
 const Product = () => {
   const [quantity, setQuantity] = useState<number>(0)

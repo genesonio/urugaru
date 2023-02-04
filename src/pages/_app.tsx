@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { trpc } from "../utils/trpc"
 
 import "../styles/globals.css"
-import Footer from "../components/Footer/Footer"
+import Footer from "../components/Footer"
 import Headbar from "../components/Headbar"
 import Head from "next/head"
 

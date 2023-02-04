@@ -1,10 +1,10 @@
 import { useSession } from "next-auth/react"
 import AdminMenu from "../../components/AdminMenu"
-import adminAuth from "../../utils/adminAuth"
+import useAdminAuth from "../../utils/useAdminAuth"
 
 const Admin = () => {
   const { data: session } = useSession()
-  const auth: boolean | undefined = adminAuth(session?.user?.email)
+  const auth: boolean | undefined = useAdminAuth(session?.user?.email)
   return <>{auth && <AdminMenu />}</>
 }
 

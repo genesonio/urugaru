@@ -1,4 +1,4 @@
-import Print from "../components/Print/Print"
+import Print from "../components/Print"
 import galleryStyle from "../styles/gallery.module.css"
 import { trpc } from "../utils/trpc"
 import Image from "next/image"
