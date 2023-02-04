@@ -1,20 +1,17 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 90%;
+  width: 90vw;
   align-self: center;
+
+  margin-top: auto;
 
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-}
 
-.fineLine {
-  margin-block: 2rem;
-  height: 1px;
-  width: 100%;
-  background-color: lightgray;
-  align-self: center;
+  height: 3rem;
+
+  border-top: 1px solid #6666665e;
 }
 
 .links {
@@ -22,7 +19,7 @@
   justify-content: space-between;
   align-items: center;
 
-  width: inherit;
+  width: 90%;
 }
 
 .instagram {
@@ -37,6 +34,6 @@
 
 @media (max-width: 360px) {
   .footer {
-    width: 95%;
+    width: 95vw;
   }
 }

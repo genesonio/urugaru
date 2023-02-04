@@ -8,7 +8,6 @@ const Footer = () => {
   return (
     <>
       <footer className={footerStyle.footer}>
-        <div className={footerStyle.fineLine}></div>
         <div className={footerStyle.links}>
           <Link
             className={footerStyle.instagram}
