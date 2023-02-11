@@ -20,7 +20,7 @@ const config = {
         hostname: "urugaru.s3.sa-east-1.amazonaws.com"
       }
     ],
-    minimumCacheTTL: 604800
+    minimumCacheTTL: 2419200
   }
 }
 export default config
