@@ -45,15 +45,21 @@ const Print: FunctionComponent<Props> = ({
         <Image
           placeholder="blur"
           blurDataURL={url}
-          priority
           fill
           className={printStyle.img}
           alt={alt}
           src={url}
+          sizes="
+          (max-width: 300px) 100vw,
+          (max-width: 700px) 90vw,
+          (max-width: 900px) 80vw,
+          (max-width: 1000px) 70vw,
+          50vw
+          "
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </div>
-      <h4 className={printStyle.name}>{name}</h4>
+      <h1 className={printStyle.name}>{name}</h1>
       {showPrice ? <p className={printStyle.price}>$ {price}</p> : null}
     </motion.div>
   )
