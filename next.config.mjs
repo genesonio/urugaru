@@ -19,7 +19,8 @@ const config = {
         protocol: "https",
         hostname: "urugaru.s3.sa-east-1.amazonaws.com"
       }
-    ]
+    ],
+    minimumCacheTTL: 604800
   }
 }
 export default config
