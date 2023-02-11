@@ -6,7 +6,7 @@
   justify-content: space-between;
 }
 
-@media (max-width: 1370px) {
+@media (max-width: 1700px) {
   .gallery {
     grid-template-areas: "print print print";
   }
@@ -18,7 +18,7 @@
   }
 }
 
-@media (max-width: 910px) {
+@media (max-width: 850px) {
   .gallery {
     grid-template-areas: "print";
     justify-content: center;
