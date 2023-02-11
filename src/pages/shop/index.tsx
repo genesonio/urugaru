@@ -22,6 +22,7 @@ const Shop = () => {
       )}
       {!data && (
         <Image
+          priority
           style={{ alignSelf: "center", marginTop: "10rem" }}
           height={300}
           width={300}
