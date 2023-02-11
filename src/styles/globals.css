@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
 html {
   min-height: 100vh;
 }
@@ -6,7 +8,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background-color: #e0e1db;
+  background-color: #e0e1db8c;
 }
 
 a {
