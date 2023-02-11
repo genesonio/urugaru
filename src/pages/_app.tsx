@@ -2,6 +2,8 @@
 import { type AppType } from "next/app"
 import { type Session } from "next-auth"
 import { SessionProvider } from "next-auth/react"
+import Head from "next/head"
+
 import { Analytics } from "@vercel/analytics/react"
 
 import { trpc } from "../utils/trpc"
@@ -9,7 +11,6 @@ import { trpc } from "../utils/trpc"
 import "../styles/globals.css"
 import Footer from "../components/Footer"
 import Headbar from "../components/Headbar"
-import Head from "next/head"
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -19,10 +20,14 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <SessionProvider session={session}>
       <Head>
         <title>uruGaru</title>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+
+        <meta charSet="UTF-8" />
+        <meta name="description" content="Art gallery" />
+        <meta
+          name="keywords"
+          content="Art, gallery, urugaru, art shop, print"
         />
+        <meta name="author" content="urugaru" />
       </Head>
       <Headbar />
       <Component {...pageProps} />
