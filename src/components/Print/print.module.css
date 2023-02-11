@@ -14,7 +14,8 @@
 
 .name {
   padding: 0;
-  color: #666;
+  color: #272727;
+  font-size: larger;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -23,7 +24,7 @@
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  color: #666;
+  color: #272727;
 }
 
 @media (max-width: 400px) {
