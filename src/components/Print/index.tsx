@@ -43,6 +43,7 @@ const Print: FunctionComponent<Props> = ({
     >
       <div className={printStyle.container}>
         <Image
+          priority
           placeholder="blur"
           blurDataURL={url}
           fill
