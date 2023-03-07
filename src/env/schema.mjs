@@ -21,7 +21,8 @@ export const serverSchema = z.object({
   ),
   AUTH0_CLIENT_ID: z.string(),
   AUTH0_CLIENT_SECRET: z.string(),
-  AUTH0_ISSUER: z.string()
+  AUTH0_ISSUER: z.string(),
+  STRIPE_SECRET_KEY: z.string()
 })
 
 /**
@@ -32,7 +33,8 @@ export const serverSchema = z.object({
 export const clientSchema = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
   NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY: z.string(),
-  NEXT_PUBLIC_AWS_ACCESS_KEY_ID: z.string()
+  NEXT_PUBLIC_AWS_ACCESS_KEY_ID: z.string(),
+  NEXT_PUBLIC_STRIPE_PUBLIC_KEY: z.string()
 })
 
 /**
@@ -45,5 +47,6 @@ export const clientEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY:
     process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
-  NEXT_PUBLIC_AWS_ACCESS_KEY_ID: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID
+  NEXT_PUBLIC_AWS_ACCESS_KEY_ID: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+  NEXT_PUBLIC_STRIPE_PUBLIC_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
 }
