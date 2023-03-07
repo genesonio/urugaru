@@ -1,16 +1,27 @@
-import { trpc } from "../../utils/trpc"
-import product from "./product.module.css"
 import Image from "next/image"
-import { useEffect, useState, ChangeEvent } from "react"
+import { useEffect, useState } from "react"
+
+import type { ChangeEvent } from "react"
+import type Stripe from "stripe"
+
+import { getProduct } from "../../libs/stripe.mjs"
+
+import product from "./product.module.css"
 
 const Product = () => {
   const [quantity, setQuantity] = useState<number>(0)
-  const [id, setId] = useState<string>("")
+  const [data, setData] = useState<Stripe.Product | null>(null)
 
-  useEffect(() => setId(window.location.pathname.slice(6)), [])
+  useEffect(() => {
+    const id = window.location.pathname.slice(6)
+    const fetchProduct = async () => {
+      const productData = await getProduct(id)
+      setData(productData)
+    }
+    fetchProduct()
+  }, []) // Alteração aqui
 
-  const { data } = trpc.print.getOne.useQuery({ id })
-
+  console.log(data)
   const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
     if (isNaN(newValue)) setQuantity(0)
@@ -19,6 +30,15 @@ const Product = () => {
   }
 
   if (!data) return null
+  if (
+    !data.default_price ||
+    typeof data.default_price == "string" ||
+    !data.default_price.unit_amount
+  )
+    return
+  if (typeof data.images[0] == "undefined") return
+  const price = Number((data.default_price.unit_amount / 100).toFixed(2))
+
   return (
     <>
       <div className={product.container}>
@@ -27,13 +47,13 @@ const Product = () => {
             priority
             fill
             className={product.image}
-            src={data.url}
+            src={data.images[0]}
             alt={data.name}
           />
         </div>
         <div className={product.flex}>
           <h1 className={product.name}>{data.name}</h1>
-          <p className={product.price}>$ {data.price?.toFixed(2)}</p>
+          <p className={product.price}>$ {price}</p>
           <p className={product.description}>{data.description}</p>
           <div
             style={{
