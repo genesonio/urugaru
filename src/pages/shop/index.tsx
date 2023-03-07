@@ -1,13 +1,28 @@
 import Link from "next/link"
-import { Key } from "react"
-import Print from "../../components/Print"
-import shopStyle from "./shop.module.css"
-import { trpc } from "../../utils/trpc"
 import Image from "next/image"
+import { useEffect, useState } from "react"
+
+import type { Key } from "react"
+import type Stripe from "stripe"
+
+import { getAllProducts } from "../../libs/stripe.mjs"
+
+import Print from "../../components/Print"
+
+import shopStyle from "./shop.module.css"
 
 const Shop = () => {
-  const { data } = trpc.print.list.useQuery()
-  const hasPrints = data?.some(({ toShop }) => toShop)
+  const [data, setData] = useState<Stripe.Product[]>([])
+  const [hasPrints, setHasPrints] = useState<boolean>(true)
+
+  useEffect(() => {
+    getAllProducts().then(data => {
+      setData(data)
+      if (data.length == 0) setHasPrints(false)
+      else setHasPrints(true)
+    })
+  }, [])
+  console.log(data)
 
   return (
     <>
@@ -20,7 +35,7 @@ const Shop = () => {
           </h2>
         </div>
       )}
-      {!data && (
+      {data.length == 0 && hasPrints && (
         <Image
           priority
           style={{ alignSelf: "center", marginTop: "10rem" }}
@@ -32,22 +47,42 @@ const Shop = () => {
       )}
       <div className={shopStyle.shop}>
         {data?.map(
-          ({ id, url, name, price, toShop }, index: Key | null | undefined) => {
-            if (!toShop) return
+          (
+            {
+              id,
+              name,
+              default_price,
+              images
+            }: {
+              id: string
+              name: string
+              default_price?: string | Stripe.Price | null | undefined
+              images: string[]
+            },
+            index: Key | null | undefined
+          ) => {
+            if (
+              !default_price ||
+              typeof default_price == "string" ||
+              !default_price.unit_amount
+            )
+              return
+            if (typeof images[0] == "undefined") return
+            const price = Number((default_price.unit_amount / 100).toFixed(2))
             return (
               <Link
                 className={shopStyle.link}
                 key={index}
-                href="/shop/[imageId]"
+                href="/shop/[productId]"
                 as={`/shop/${id}`}
               >
                 <Print
                   price={price}
                   alt={name}
                   name={name}
-                  url={url}
+                  url={images[0]}
                   key={index}
-                  showPrice={toShop}
+                  showPrice={true}
                 />
               </Link>
             )
