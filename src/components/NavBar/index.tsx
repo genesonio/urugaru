@@ -16,7 +16,7 @@ function Navigation(props: { selected: string }) {
         </li>
         <li>
           <Link
-            id={props.selected === "/bio" ? "active" : ""}
+            id={props.selected === "/b" ? "active" : ""}
             className={`${navBarStyles.link}`}
             href="/bio"
           >
@@ -25,7 +25,7 @@ function Navigation(props: { selected: string }) {
         </li>
         <li>
           <Link
-            id={props.selected === "/shop" ? "active" : ""}
+            id={props.selected === "/s" ? "active" : ""}
             className={`${navBarStyles.link}`}
             href="/shop"
           >
@@ -34,7 +34,7 @@ function Navigation(props: { selected: string }) {
         </li>
         <li>
           <Link
-            id={props.selected === "/contact" ? "active" : ""}
+            id={props.selected === "/c" ? "active" : ""}
             className={`${navBarStyles.link}`}
             href="/contact"
           >
