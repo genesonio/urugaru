@@ -78,9 +78,13 @@
   font-size: large;
 }
 
+.quantity:focus {
+  outline: 1px solid #272727;
+}
+
 .purchase {
-  margin-left: 6rem;
-  height: 3.5rem;
+  /* margin-left: 6rem; */
+  height: 3rem;
   width: 8.5rem;
 
   background-color: #272727;
@@ -96,6 +100,15 @@
 .purchase:hover {
   background-color: #666;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.purchase:active {
+  color: #272727;
+  transition: all 0.1s ease-in;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);
 }
 
 @media (max-width: 1330px) {

@@ -1,83 +1,91 @@
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 
-import type { ChangeEvent } from "react"
-import type Stripe from "stripe"
+import { CartContext } from "../../utils/cartContext.mjs"
+
+import { Product, ProductSample } from "../../types/Product"
 
 import { getProduct } from "../../libs/stripe.mjs"
 
-import product from "./product.module.css"
+import style from "./product.module.css"
 
 const Product = () => {
-  const [quantity, setQuantity] = useState<number>(0)
-  const [data, setData] = useState<Stripe.Product | null>(null)
+  const [product, setProduct] = useState<Product | null>(null)
+
+  const cart = useContext(CartContext)
 
   useEffect(() => {
+    const prod = ProductSample
     const id = window.location.pathname.slice(6)
     const fetchProduct = async () => {
       const productData = await getProduct(id)
-      setData(productData)
+      console.log(productData)
+      prod.id = id
+      prod.name = productData.name
+      if (
+        !productData.default_price ||
+        typeof productData.default_price == "string" ||
+        !productData.default_price.unit_amount
+      ) {
+        prod.price = 0
+      } else {
+        prod.price = productData.default_price?.unit_amount
+      }
+      if (typeof productData.images[0] == "string")
+        prod.image = productData.images[0]
+      if (typeof productData.description == "string")
+        prod.description = productData.description
+      setProduct(prod)
     }
     fetchProduct()
-  }, []) // Alteração aqui
+  }, [])
 
-  console.log(data)
-  const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
+  /* const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
     if (isNaN(newValue)) setQuantity(0)
     const isPositiveNum = !isNaN(newValue) && newValue > 0
     if (isPositiveNum) setQuantity(newValue)
-  }
+  } */
 
-  if (!data) return null
-  if (
-    !data.default_price ||
-    typeof data.default_price == "string" ||
-    !data.default_price.unit_amount
-  )
-    return
-  if (typeof data.images[0] == "undefined") return
-  const price = Number((data.default_price.unit_amount / 100).toFixed(2))
+  if (!product) return null
+
+  const productQuantity = cart.getProductQuantity(product.id)
+
+  console.log(cart.items)
 
   return (
     <>
-      <div className={product.container}>
-        <div className={product.imageWrapper}>
+      <div className={style.container}>
+        <div className={style.imageWrapper}>
           <Image
             priority
             fill
-            className={product.image}
-            src={data.images[0]}
-            alt={data.name}
+            className={style.image}
+            src={product.image}
+            alt={product.name}
           />
         </div>
-        <div className={product.flex}>
-          <h1 className={product.name}>{data.name}</h1>
-          <p className={product.price}>$ {price}</p>
-          <p className={product.description}>{data.description}</p>
+        <div className={style.flex}>
+          <h1 className={style.name}>{product.name}</h1>
+          <p className={style.price}>$ {(product.price / 100).toFixed(2)}</p>
+          <p className={style.description}>{product.description}</p>
           <div
             style={{
               display: "flex",
-              alignItems: "center"
+              alignItems: "center",
+              justifyContent: "space-between"
             }}
           >
-            <label className={product.labelQty} htmlFor="quantity">
-              Quantity:
-            </label>
             <input
-              className={product.quantity}
-              onChange={e => handleInputNum(e)}
-              type="text"
-              inputMode="numeric"
-              name="quantity"
-              id="quantity"
-            />
-            <input
-              className={product.purchase}
+              className={style.purchase}
               type="button"
               id="purchase"
-              value="PURCHASE"
+              value="Add to cart"
+              onClick={() => cart.addOneToCart(product.id)}
             />
+            {productQuantity > 0 ? (
+              <p className={style.labelQty}>Added to cart: {productQuantity}</p>
+            ) : null}
           </div>
         </div>
       </div>
