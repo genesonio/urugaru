@@ -1,0 +1,59 @@
+.container {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 10px;
+
+  align-items: center;
+
+  border-bottom: 1px solid #272727;
+}
+
+.prod {
+  display: flex;
+  width: 50%;
+  gap: 2rem;
+}
+
+.wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.name {
+  color: #272727;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  gap: 2rem;
+}
+
+.text {
+  color: #666;
+  font-weight: bold;
+}
+
+.empty {
+  width: 90vw;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.total {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  padding: 10px;
+
+  color: #272727;
+  font-weight: 600;
+}

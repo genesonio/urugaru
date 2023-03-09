@@ -29,7 +29,8 @@ const Product = () => {
       ) {
         prod.price = 0
       } else {
-        prod.price = productData.default_price?.unit_amount
+        prod.priceId = productData.default_price?.id
+        prod.price = productData.default_price?.unit_amount / 100
       }
       if (typeof productData.images[0] == "string")
         prod.image = productData.images[0]
@@ -39,20 +40,9 @@ const Product = () => {
     }
     fetchProduct()
   }, [])
-
-  /* const handleInputNum = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(e.target.value)
-    if (isNaN(newValue)) setQuantity(0)
-    const isPositiveNum = !isNaN(newValue) && newValue > 0
-    if (isPositiveNum) setQuantity(newValue)
-  } */
-
   if (!product) return null
 
   const productQuantity = cart.getProductQuantity(product.id)
-
-  console.log(cart.items)
-
   return (
     <>
       <div className={style.container}>
@@ -67,7 +57,7 @@ const Product = () => {
         </div>
         <div className={style.flex}>
           <h1 className={style.name}>{product.name}</h1>
-          <p className={style.price}>$ {(product.price / 100).toFixed(2)}</p>
+          <p className={style.price}>$ {product.price.toFixed(2)}</p>
           <p className={style.description}>{product.description}</p>
           <div
             style={{
@@ -81,7 +71,7 @@ const Product = () => {
               type="button"
               id="purchase"
               value="Add to cart"
-              onClick={() => cart.addOneToCart(product.id)}
+              onClick={() => cart.addOneToCart(product)}
             />
             {productQuantity > 0 ? (
               <p className={style.labelQty}>Added to cart: {productQuantity}</p>
