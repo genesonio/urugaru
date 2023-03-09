@@ -1,7 +1,17 @@
 import { createContext, useState } from "react"
 
 export const CartContext = createContext({
-  items: [],
+  items: [
+    {
+      id: "prod_NSFapMjEZUC0wx",
+      image:
+        "https://files.stripe.com/links/MDB8YWNjdF8xTVlHc3BKNkpNeGtlc1JWfGZsX3Rlc3Rfd0VQMkt5V1NOMnViNEI2NUNUT2RKV3c400CLlet9Eg",
+      name: "Alice in Nightmareland",
+      price: 35,
+      priceId: "",
+      quantity: 6
+    }
+  ],
   getProductQuantity: id => {
     const quantity = cartProducts.find(product => product.id === id)?.quantity
 
@@ -11,23 +21,23 @@ export const CartContext = createContext({
 
     return quantity
   },
-  addOneToCart: id => {
-    const quantity = getProductQuantity(id)
+  addOneToCart: product => {
+    const quantity = getProductQuantity(product.id)
 
     if (quantity === 0) {
       setCartProducts([
         ...cartProducts,
         {
-          id: id,
+          id: product.id,
           quantity: 1
         }
       ])
     } else {
       setCartProducts(
-        cartProducts.map(product =>
-          product.id === id
-            ? { ...product, quantity: product.quantity + 1 }
-            : product
+        cartProducts.map(prod =>
+          prod.id === product.id
+            ? { ...prod, quantity: prod.quantity + 1 }
+            : prod
         )
       )
     }
@@ -72,23 +82,23 @@ const CartProvider = ({ children }) => {
     return quantity
   }
 
-  const addOneToCart = id => {
-    const quantity = getProductQuantity(id)
+  const addOneToCart = product => {
+    const quantity = getProductQuantity(product.id)
 
     if (quantity === 0) {
       setCartProducts([
         ...cartProducts,
         {
-          id: id,
+          ...product,
           quantity: 1
         }
       ])
     } else {
       setCartProducts(
-        cartProducts.map(product =>
-          product.id === id
-            ? { ...product, quantity: product.quantity + 1 }
-            : product
+        cartProducts.map(prod =>
+          prod.id === product.id
+            ? { ...prod, quantity: prod.quantity + 1 }
+            : prod
         )
       )
     }
