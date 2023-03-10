@@ -12,7 +12,7 @@
 
 .prod {
   display: flex;
-  width: 50%;
+  width: 95%;
   gap: 2rem;
 }
 
@@ -50,10 +50,88 @@
 
 .total {
   display: flex;
-  justify-content: end;
+  flex-direction: column;
+  align-items: end;
   gap: 1rem;
   padding: 10px;
 
   color: #272727;
   font-weight: 600;
+}
+
+.addIcon {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.minIcon {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.trashIcon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+}
+
+.addIcon:hover {
+  transform: translateY(-1px);
+}
+.minIcon:hover {
+  transform: translateY(-1px);
+}
+.trashIcon:hover {
+  transform: translateY(-1px);
+}
+
+.addIcon:active {
+  transform: translateY(1px);
+}
+.minIcon:active {
+  transform: translateY(1px);
+}
+.trashIcon:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 95vw;
+  }
+  .prod {
+    gap: 0.5rem;
+    align-items: center;
+    width: 80%;
+  }
+  .name {
+    font-size: 1rem;
+  }
+
+  .text {
+    font-size: 0.85rem;
+  }
+
+  .addIcon {
+    margin-bottom: -5px;
+  }
+
+  .minIcon {
+    margin-top: -5px;
+  }
+
+  .itemTotal {
+    width: fit-content;
+  }
+  .info {
+    gap: 0;
+    justify-content: space-between;
+  }
 }
