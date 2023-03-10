@@ -52,6 +52,10 @@
   width: 17rem;
   line-height: 2.5rem;
   align-self: flex-end;
+
+  word-wrap: break-word; /* IE 5.5-7 */
+  white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+  white-space: pre-wrap;
 }
 
 .labelQty {
@@ -123,15 +127,11 @@
 
 @media (max-width: 720px) {
   .imageWrapper {
-    width: 20rem;
-    height: 20rem;
+    width: 18rem;
+    height: 18rem;
   }
 
   .flex {
     width: 80vw;
-  }
-
-  .purchase {
-    margin-left: auto;
   }
 }

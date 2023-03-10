@@ -1,11 +1,11 @@
 import Image from "next/image"
 import { useEffect, useState, useContext } from "react"
 
-import { CartContext } from "../../utils/cartContext.mjs"
+import { CartContext } from "../../../utils/cartContext.mjs"
 
-import { Product, ProductSample } from "../../types/Product"
+import { Product, ProductSample } from "../../../types/Product"
 
-import { getProduct } from "../../libs/stripe.mjs"
+import { getProduct } from "../../../libs/stripe.mjs"
 
 import style from "./product.module.css"
 
@@ -74,7 +74,7 @@ const Product = () => {
               onClick={() => cart.addOneToCart(product)}
             />
             {productQuantity > 0 ? (
-              <p className={style.labelQty}>Added to cart: {productQuantity}</p>
+              <p className={style.labelQty}>On cart: {productQuantity}</p>
             ) : null}
           </div>
         </div>
