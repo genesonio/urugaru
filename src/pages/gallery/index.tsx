@@ -1,10 +1,24 @@
-import Print from "../../components/Print"
-import galleryStyle from "./gallery.module.css"
-import { trpc } from "../../utils/trpc"
 import Image from "next/image"
 
+import Print from "../../components/Print"
+import Carousel from "../../components/Carousel"
+
+import { trpc } from "../../utils/trpc"
+
+import galleryStyle from "./gallery.module.css"
+import { useState } from "react"
+
 function Gallery() {
+  const [isModal, setIsModal] = useState<boolean>(false)
+  const [index, setIndex] = useState<number>(0)
   const { data } = trpc.print.list.useQuery()
+
+  const handleModal = (index?: number) => {
+    setIsModal(!isModal)
+    if (typeof index == "undefined") setIndex(0)
+    if (index) setIndex(index)
+    console.log(isModal)
+  }
   return (
     <>
       {!data && (
@@ -21,15 +35,21 @@ function Gallery() {
         {data?.map(({ name, url, toGallery }, index) => {
           if (!toGallery) return
           return (
-            <Print
-              name={name}
-              showPrice={!toGallery}
-              alt={name}
-              url={url}
+            <button
+              onClick={() => handleModal(index)}
+              className={galleryStyle.modal}
               key={index}
-            />
+            >
+              <Print name={name} showPrice={!toGallery} alt={name} url={url} />
+            </button>
           )
         })}
+        <Carousel
+          handleModal={handleModal}
+          images={data}
+          key={index}
+          modal={isModal}
+        />
         {data === undefined || (data?.length === 0 && <p>Coming soon!</p>)}
       </div>
     </>
