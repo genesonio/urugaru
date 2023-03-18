@@ -13,20 +13,20 @@ import shopStyle from "./shop.module.css"
 
 const Shop = () => {
   const [data, setData] = useState<Stripe.Product[]>([])
-  const [hasPrints, setHasPrints] = useState<boolean>(true)
+  const [isInactive, setIsInactive] = useState<boolean>(false)
 
   useEffect(() => {
     getAllProducts().then(data => {
       setData(data)
-      if (data.length == 0) setHasPrints(false)
-      else setHasPrints(true)
+      const allInactive = data.every(product => product.active === false)
+      if (allInactive) setIsInactive(true)
     })
   }, [])
   console.log(data)
 
   return (
     <>
-      {!hasPrints && (
+      {isInactive && (
         <div style={{ width: "90vw", textAlign: "center" }}>
           <h1>Thank you for visiting our shop!</h1>
           <h2>
@@ -35,7 +35,7 @@ const Shop = () => {
           </h2>
         </div>
       )}
-      {data.length == 0 && hasPrints && (
+      {data.length == 0 && !isInactive && (
         <Image
           priority
           style={{ alignSelf: "center", marginTop: "10rem" }}
@@ -52,12 +52,14 @@ const Shop = () => {
               id,
               name,
               default_price,
-              images
+              images,
+              active
             }: {
               id: string
               name: string
               default_price?: string | Stripe.Price | null | undefined
               images: string[]
+              active: boolean
             },
             index: Key | null | undefined
           ) => {
@@ -68,6 +70,7 @@ const Shop = () => {
             )
               return
             if (typeof images[0] == "undefined") return
+            if (!active) return
             const price = Number((default_price.unit_amount / 100).toFixed(2))
             return (
               <Link
