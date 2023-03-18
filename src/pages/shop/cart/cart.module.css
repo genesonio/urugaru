@@ -1,0 +1,137 @@
+.container {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 10px;
+
+  align-items: center;
+
+  border-bottom: 1px solid #272727;
+}
+
+.prod {
+  display: flex;
+  width: 95%;
+  gap: 2rem;
+}
+
+.wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.name {
+  color: #272727;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  gap: 2rem;
+}
+
+.text {
+  color: #666;
+  font-weight: bold;
+}
+
+.empty {
+  width: 90vw;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 1rem;
+  padding: 10px;
+
+  color: #272727;
+  font-weight: 600;
+}
+
+.addIcon {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.minIcon {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.trashIcon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+}
+
+.addIcon:hover {
+  transform: translateY(-1px);
+}
+.minIcon:hover {
+  transform: translateY(-1px);
+}
+.trashIcon:hover {
+  transform: translateY(-1px);
+}
+
+.addIcon:active {
+  transform: translateY(1px);
+}
+.minIcon:active {
+  transform: translateY(1px);
+}
+.trashIcon:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 95vw;
+  }
+  .prod {
+    gap: 0.5rem;
+    align-items: center;
+    width: 80%;
+  }
+  .name {
+    font-size: 1rem;
+  }
+
+  .text {
+    font-size: 0.85rem;
+  }
+
+  .addIcon {
+    margin-bottom: -5px;
+  }
+
+  .minIcon {
+    margin-top: -5px;
+  }
+
+  .itemTotal {
+    width: fit-content;
+  }
+  .info {
+    gap: 0;
+    justify-content: space-between;
+  }
+}

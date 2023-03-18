@@ -1,8 +1,11 @@
 import Image from "next/image"
-import { useState, ChangeEvent } from "react"
-import upload from "./upload.module.css"
+import type { ChangeEvent } from "react"
+import { useState } from "react"
+
 import { generateUploadUrl } from "../../libs/s3Client.mjs"
 import { trpc } from "../../utils/trpc"
+
+import upload from "./upload.module.css"
 
 function Upload() {
   const [price, setPrice] = useState<number>(0) // price

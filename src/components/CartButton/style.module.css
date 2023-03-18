@@ -1,0 +1,39 @@
+.wrapper {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  cursor: pointer;
+}
+
+.icon {
+  width: 100%;
+  object-fit: contain;
+}
+
+.wrapper:hover {
+  transform: translateY(-1px);
+}
+
+.wrapper:active {
+  transform: translateY(1px);
+}
+
+.total {
+  position: relative;
+  top: -20px;
+  right: 10px;
+  border-radius: 9999999px;
+  background-color: #666;
+  width: 20px;
+  padding-top: 3px;
+  height: 20px;
+
+  font-size: 0.7rem;
+
+  color: #fff;
+
+  font-weight: bold;
+  text-align: center;
+}

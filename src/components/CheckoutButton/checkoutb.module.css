@@ -1,0 +1,28 @@
+.checkout {
+  /* margin-left: 6rem; */
+  height: 3rem;
+  width: 8.5rem;
+
+  background-color: #272727;
+  border: 0;
+  border-radius: 2rem;
+
+  font: bold 1rem sans-serif;
+  color: #fff;
+
+  cursor: pointer;
+}
+
+.checkout:hover {
+  background-color: #666;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.checkout:active {
+  color: #272727;
+  transition: all 0.1s ease-in;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);
+}

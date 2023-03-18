@@ -6,6 +6,12 @@
   justify-content: space-between;
 }
 
+.modal {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
 @media (max-width: 1700px) {
   .gallery {
     grid-template-areas: "print print print";
