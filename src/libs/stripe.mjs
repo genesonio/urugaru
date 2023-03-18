@@ -1,11 +1,12 @@
 import Stripe from "stripe"
 
-const stripe = new Stripe(
-  "sk_test_51MYGspJ6JMxkesRVEX8gwop3SCou3S0xe0sbNiesIT75UeN5FxLNA8MIgfxsamKsX6hUYQajHbhx9O8a2iL7rDHo00xkpHIX97",
-  {
-    apiVersion: "2022-11-15"
-  }
-)
+import { env } from "../env/client.mjs"
+
+const secretKey = env.NEXT_PUBLIC_STRIPE_SECRET_KEY
+
+const stripe = new Stripe(secretKey, {
+  apiVersion: "2022-11-15"
+})
 
 export const getAllProducts = async () => {
   const products = await stripe.products.list({
