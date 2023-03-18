@@ -11,16 +11,17 @@ import "swiper/swiper.css"
 Modal.setAppElement("#__next")
 
 const Carousel = ({
-  key,
+  index: index,
   images,
   modal,
   handleModal
 }: {
-  key: number
+  index: number
   images: Print[] | undefined
   modal: boolean
   handleModal: (index?: number) => void
 }) => {
+  console.log(index)
   if (!images) return <></>
   return (
     <Modal
@@ -36,7 +37,7 @@ const Carousel = ({
           alt="Close button"
         />
       </button>
-      <Swiper className={style.swiper} initialSlide={key} spaceBetween={30}>
+      <Swiper className={style.swiper} initialSlide={index} spaceBetween={30}>
         {images.map((image, index) => {
           return (
             <SwiperSlide key={index}>

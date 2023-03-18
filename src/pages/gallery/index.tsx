@@ -14,10 +14,9 @@ function Gallery() {
   const { data } = trpc.print.list.useQuery()
 
   const handleModal = (index?: number) => {
-    setIsModal(!isModal)
     if (typeof index == "undefined") setIndex(0)
     if (index) setIndex(index)
-    console.log(isModal)
+    setIsModal(!isModal)
   }
   return (
     <>
@@ -47,7 +46,7 @@ function Gallery() {
         <Carousel
           handleModal={handleModal}
           images={data}
-          key={index}
+          index={index}
           modal={isModal}
         />
         {data === undefined || (data?.length === 0 && <p>Coming soon!</p>)}
