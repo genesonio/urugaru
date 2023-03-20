@@ -7,16 +7,17 @@ import type { Print } from "../../types/Print"
 import style from "./carousel.module.css"
 import "swiper/swiper-bundle.css"
 import "swiper/swiper.css"
+import { Keyboard } from "swiper"
 
 Modal.setAppElement("#__next")
 
 const Carousel = ({
-  key,
+  index: index,
   images,
   modal,
   handleModal
 }: {
-  key: number
+  index: number
   images: Print[] | undefined
   modal: boolean
   handleModal: (index?: number) => void
@@ -27,6 +28,7 @@ const Carousel = ({
       className={style.modal}
       overlayClassName={style.overlay}
       isOpen={modal}
+      onRequestClose={() => handleModal()}
     >
       <button onClick={() => handleModal()} className={style.iconWrapper}>
         <Image
@@ -36,7 +38,18 @@ const Carousel = ({
           alt="Close button"
         />
       </button>
-      <Swiper className={style.swiper} initialSlide={key} spaceBetween={30}>
+      <Swiper
+        className={style.swiper}
+        initialSlide={index}
+        grabCursor={true}
+        keyboard={{
+          enabled: true,
+          onlyInViewport: false,
+          pageUpDown: true
+        }}
+        modules={[Keyboard]}
+        spaceBetween={30}
+      >
         {images.map((image, index) => {
           return (
             <SwiperSlide key={index}>
