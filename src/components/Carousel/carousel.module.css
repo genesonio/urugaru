@@ -5,12 +5,12 @@
 }
 
 .modal {
-  width: 90vw;
+  width: 45vw;
   height: 90vh;
 
   position: absolute;
   top: 5%;
-  left: 5%;
+  left: 27.5%;
 
   outline: none;
 }
@@ -24,9 +24,9 @@
   width: 25px;
   height: 25px;
 
-  position: relative;
-  top: 0;
-  left: 95%;
+  position: absolute;
+  top: -2%;
+  left: 125%;
 
   z-index: 1;
 }
@@ -42,4 +42,18 @@
 
 .image {
   object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    width: 90vw;
+    height: 55vh;
+    top: 22.5%;
+    left: 5%;
+  }
+
+  .iconWrapper {
+    top: -27%;
+    left: 97%;
+  }
 }
