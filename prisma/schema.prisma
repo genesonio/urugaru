@@ -75,4 +75,5 @@ model Print {
   price       Int     @default(0)
   toShop      Boolean @default(false)
   toGallery   Boolean @default(true)
+  order       Int     @unique @default(autoincrement())
 }
