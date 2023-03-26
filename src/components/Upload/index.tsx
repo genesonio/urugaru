@@ -117,7 +117,7 @@ function Upload() {
           </div>
         </div>
         <label className={upload.photoLb} htmlFor="photo">
-          Photo:
+          Photo: <span>click here</span>
         </label>
         <input
           className={upload.photo}

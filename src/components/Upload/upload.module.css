@@ -46,6 +46,10 @@
   display: none;
 }
 
+.photoLb span {
+  color: #9f9f9f;
+}
+
 .preview {
   background-color: transparent;
   border: 0;

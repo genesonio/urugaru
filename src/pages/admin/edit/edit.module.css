@@ -1,11 +1,11 @@
 .edit {
   width: 80%;
-  margin-top: 5rem;
+  margin-top: 2rem;
   align-self: center;
 
   display: flex;
 
-  gap: 5rem;
+  gap: 3rem;
 }
 
 .imageWrapper {
@@ -85,4 +85,15 @@
   padding-inline: 1.5rem;
 
   font-size: larger;
+}
+
+@media (max-width: 600px) {
+  .edit {
+    flex-direction: column;
+  }
+
+  .imageWrapper {
+    width: 20rem;
+    height: 20rem;
+  }
 }
