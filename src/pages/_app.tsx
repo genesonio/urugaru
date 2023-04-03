@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-page-custom-font */
 import { type AppType } from "next/app"
 import { type Session } from "next-auth"
 import { SessionProvider } from "next-auth/react"
