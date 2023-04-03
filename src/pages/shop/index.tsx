@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import type { Key } from "react"
 import type Stripe from "stripe"
@@ -14,13 +14,13 @@ import shopStyle from "./shop.module.css"
 const Shop = ({ products }: { products: Stripe.Product[] }) => {
   const [isInactive, setIsInactive] = useState<boolean>(false)
 
+  useEffect(() => {
+    const allInactive = products.every(product => product.active === false)
+    if (allInactive) setIsInactive(true)
+  }, [products])
+
   if (typeof products == "undefined")
     return <h1>Ops! Something wrong happened</h1>
-
-  const allInactive = products.every(product => product.active === false)
-  if (allInactive) setIsInactive(true)
-
-  console.log(products)
 
   return (
     <>
