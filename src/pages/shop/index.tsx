@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import type { Key } from "react"
 import type Stripe from "stripe"
@@ -11,18 +11,16 @@ import Print from "../../components/Print"
 
 import shopStyle from "./shop.module.css"
 
-const Shop = () => {
-  const [data, setData] = useState<Stripe.Product[]>([])
+const Shop = ({ products }: { products: Stripe.Product[] }) => {
   const [isInactive, setIsInactive] = useState<boolean>(false)
 
-  useEffect(() => {
-    getAllProducts().then(data => {
-      setData(data)
-      const allInactive = data.every(product => product.active === false)
-      if (allInactive) setIsInactive(true)
-    })
-  }, [])
-  console.log(data)
+  if (typeof products == "undefined")
+    return <h1>Ops! Something wrong happened</h1>
+
+  const allInactive = products.every(product => product.active === false)
+  if (allInactive) setIsInactive(true)
+
+  console.log(products)
 
   return (
     <>
@@ -35,7 +33,7 @@ const Shop = () => {
           </h2>
         </div>
       )}
-      {data.length == 0 && !isInactive && (
+      {products.length == 0 && !isInactive && (
         <Image
           priority
           style={{ alignSelf: "center", marginTop: "10rem" }}
@@ -46,7 +44,7 @@ const Shop = () => {
         />
       )}
       <div className={shopStyle.shop}>
-        {data?.map(
+        {products.map(
           (
             {
               id,
@@ -94,6 +92,16 @@ const Shop = () => {
       </div>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const products = await getAllProducts()
+
+  return {
+    props: {
+      products
+    }
+  }
 }
 
 export default Shop

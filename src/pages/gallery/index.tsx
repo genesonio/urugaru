@@ -8,9 +8,10 @@ import { trpc } from "../../utils/trpc"
 import galleryStyle from "./gallery.module.css"
 import { useState } from "react"
 
-function Gallery() {
+export default function Gallery() {
   const [isModal, setIsModal] = useState<boolean>(false)
   const [index, setIndex] = useState<number>(0)
+
   const { data } = trpc.print.list.useQuery()
 
   const handleModal = (index?: number) => {
@@ -18,6 +19,7 @@ function Gallery() {
     if (index) setIndex(index)
     setIsModal(!isModal)
   }
+
   return (
     <>
       {!data && (
@@ -54,5 +56,3 @@ function Gallery() {
     </>
   )
 }
-
-export default Gallery
