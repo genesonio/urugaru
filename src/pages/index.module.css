@@ -1,0 +1,26 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 100dvw;
+  height: calc(100dvh - 3rem);
+
+  background-color: #e0e1db8c;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.h1 {
+  font-size: 3rem;
+  color: #272727;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.p {
+  font-size: 1.5rem;
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}

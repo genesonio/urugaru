@@ -24,7 +24,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  /* gap: 2rem; */
   min-height: 100vh;
 }
 

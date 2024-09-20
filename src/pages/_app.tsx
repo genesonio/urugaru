@@ -3,14 +3,11 @@ import { type Session } from "next-auth"
 import { SessionProvider } from "next-auth/react"
 import Head from "next/head"
 
-import { Analytics } from "@vercel/analytics/react"
-
 import { trpc } from "../utils/trpc"
 import CartProvider from "../utils/cartContext.mjs"
 
 import "../styles/globals.css"
 import Footer from "../components/Footer"
-import Headbar from "../components/Headbar"
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -30,15 +27,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
           />
           <meta name="author" content="urugaru" />
         </Head>
-        <Headbar />
         <Component {...pageProps} />
-        <Analytics
-          beforeSend={event => {
-            if (event.url.includes("/admin")) return null
-            if (event.url.includes("/admin/login")) return null
-            return event
-          }}
-        />
         <Footer />
       </CartProvider>
     </SessionProvider>
